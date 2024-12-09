@@ -29,7 +29,7 @@ colorama==0.4.6
     # via dbt-common
 daff==1.3.46
     # via dbt-core
-dbt-adapters==1.7.0
+dbt-adapters==1.10.4
     # via
     #   dbt-core
     #   dbt-duckdb
