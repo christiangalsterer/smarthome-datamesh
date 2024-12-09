@@ -92,7 +92,7 @@ networkx==3.4.2
     # via dbt-core
 ordered-set==4.1.0
     # via deepdiff
-packaging==24.1
+packaging==24.2
     # via dbt-core
 parsedatetime==2.6
     # via agate
