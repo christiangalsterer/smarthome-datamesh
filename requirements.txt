@@ -73,7 +73,7 @@ jsonschema-specifications==2024.10.1
     # via jsonschema
 leather==0.4.0
     # via agate
-logbook==1.5.3
+logbook==1.8.0
     # via dbt-core
 markupsafe==3.0.2
     # via jinja2
