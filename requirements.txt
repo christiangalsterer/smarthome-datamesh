@@ -38,7 +38,7 @@ dbt-common==1.10.0
     #   dbt-adapters
     #   dbt-core
     #   dbt-duckdb
-dbt-core==1.8.8
+dbt-core==1.8.9
     # via
     #   -r requirements.in
     #   dbt-duckdb
