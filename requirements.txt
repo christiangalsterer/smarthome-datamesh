@@ -77,7 +77,7 @@ logbook==1.8.0
     # via dbt-core
 markupsafe==3.0.2
     # via jinja2
-mashumaro[msgpack]==3.14
+mashumaro[msgpack]==3.15
     # via
     #   dbt-adapters
     #   dbt-common
