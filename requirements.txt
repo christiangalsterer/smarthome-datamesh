@@ -46,7 +46,7 @@ dbt-duckdb==1.9.1
     # via -r requirements.in
 dbt-extractor==0.5.1
     # via dbt-core
-dbt-semantic-interfaces==0.5.1
+dbt-semantic-interfaces==0.8.3
     # via dbt-core
 deepdiff==7.0.1
     # via dbt-common
