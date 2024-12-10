@@ -100,7 +100,7 @@ pathspec==0.12.1
     # via
     #   dbt-common
     #   dbt-core
-protobuf==4.25.5
+protobuf==5.29.1
     # via
     #   dbt-adapters
     #   dbt-common
