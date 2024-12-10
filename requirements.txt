@@ -134,7 +134,7 @@ requests==2.32.3
     #   dbt-common
     #   dbt-core
     #   minimal-snowplow-tracker
-rpds-py==0.20.1
+rpds-py==0.22.3
     # via
     #   jsonschema
     #   referencing
