@@ -1,0 +1,7 @@
+name: smarthome_dwh
+type: duckdb
+options:
+  filename: ../../../smarthome_dwh.duckdb
+  
+
+  

@@ -1,11 +1,6 @@
 ---
-title: Welcome to Evidence
+title: Welcome to the SmartHome DataMesh
 ---
-
-<Details title='How to edit this page'>
-
-  This page can be found in your project at `/pages/index.md`. Make a change to the markdown file and save it to see the change take effect in your browser.
-</Details>
 
 ```sql categories
   select
@@ -36,8 +31,7 @@ title: Welcome to Evidence
   group by all
   order by sales_usd desc
 ```
-
-<BarChart
+<LineChart
     data={orders_by_category}
     title="Sales by Month, {inputs.category.label}"
     x=month
@@ -45,12 +39,33 @@ title: Welcome to Evidence
     series=category
 />
 
-## What's Next?
-- [Connect your data sources](settings)
-- Edit/add markdown files in the `pages` folder
-- Deploy your project with [Evidence Cloud](https://evidence.dev/cloud)
+```sql days
+  select
+      strftime(created_date, '%Y-%m-%d') as day
+  from smarthome_dwh.temperatures
+  order by day desc
+```
 
-## Get Support
-- Message us on [Slack](https://slack.evidence.dev/)
-- Read the [Docs](https://docs.evidence.dev/)
-- Open an issue on [Github](https://github.com/evidence-dev/evidence)
+<Dropdown data={days} name=day value=day>
+  <DropdownOption value="%" valueLabel="All Days"/>
+</Dropdown>
+
+```sql temperatures
+  select 
+    created_date as timestamp,
+    temp_ruecklauf,
+    temp_ruecklauf_soll,
+    temp_vorlauf,
+  from smarthome_dwh.temperatures
+  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
+  order by timestamp desc
+```
+
+<LineChart
+    data={temperatures}
+    title="Temperatures over Time for {inputs.day.label}"
+    x=timestamp
+    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf']}
+    fmt=num0
+/>
+

@@ -1,4 +1,4 @@
-{    
+{
     "yaml.schemas": {
         "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/dbt_yml_files-latest.json": [
             "/**/*.yml",
@@ -29,4 +29,11 @@
         }
     ],
     "sqltools.useNodeRuntime": true,
+    "editor.acceptSuggestionOnEnter": true,
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.quickSuggestionsDelay": 300,
 }

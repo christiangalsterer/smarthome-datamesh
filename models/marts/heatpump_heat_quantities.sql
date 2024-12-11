@@ -6,16 +6,14 @@ source as (
 
 ),
 
-temperatures as (
+heat_quantities as (
 
     select
         created_at,
         created_date,
-        tvl as temp_vorlauf,
-        trl_soll as temp_ruecklauf_soll,
-        trl as temp_ruecklauf
+        wmz_bw as heat_quantity_water,
+        wmz_hz as heat_quantity_heating
     from source
-
 )
 
-select * from temperatures
+select * from heat_quantities
