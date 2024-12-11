@@ -13,7 +13,8 @@ temperatures as (
         created_date,
         tvl as temp_vorlauf,
         trl_soll as temp_ruecklauf_soll,
-        trl as temp_ruecklauf
+        trl as temp_ruecklauf,
+        tvl - trl as temp_delta_t
     from source
 
 )

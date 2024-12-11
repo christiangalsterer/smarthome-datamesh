@@ -56,6 +56,7 @@ title: Welcome to the SmartHome DataMesh
     temp_ruecklauf,
     temp_ruecklauf_soll,
     temp_vorlauf,
+    temp_delta_t
   from smarthome_dwh.temperatures
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
@@ -65,7 +66,7 @@ title: Welcome to the SmartHome DataMesh
     data={temperatures}
     title="Temperatures over Time for {inputs.day.label}"
     x=timestamp
-    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf']}
-    fmt=num0
+    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
+    fmt=num2
 />
 
