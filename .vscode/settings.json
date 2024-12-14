@@ -19,16 +19,6 @@
             "packages.yml"
         ]
     },
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "driver": "DuckDB",
-            "name": "smarthome_dwh",
-            "database": "${workspaceFolder:smarthome-datamesh}/smarthome_dwh.duckdb",
-            "group": "DuckDB"
-        }
-    ],
-    "sqltools.useNodeRuntime": true,
     "editor.acceptSuggestionOnEnter": "on",
     "editor.quickSuggestions": {
         "other": false,
