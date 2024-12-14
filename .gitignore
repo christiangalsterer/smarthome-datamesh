@@ -2,6 +2,7 @@
 .DS_STORE
 .user.yml
 ingest_data/
+venv
 
 #dbt
 target/
