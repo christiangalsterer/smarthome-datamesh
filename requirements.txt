@@ -60,7 +60,7 @@ idna==3.10
     # via requests
 importlib-metadata==8.5.0
     # via dbt-semantic-interfaces
-isodate==0.6.1
+isodate==0.7.2
     # via
     #   agate
     #   dbt-common
