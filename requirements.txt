@@ -52,7 +52,7 @@ dbt-extractor==0.5.1
     # via dbt-core
 dbt-semantic-interfaces==0.7.4
     # via dbt-core
-deepdiff==7.0.1
+deepdiff==8.0.1
     # via dbt-common
 duckdb==1.1.3
     # via dbt-duckdb
