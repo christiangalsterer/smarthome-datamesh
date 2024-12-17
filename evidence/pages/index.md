@@ -52,3 +52,22 @@ title: Welcome to the SmartHome DataMesh
     y={['heat_quantity_heating', 'heat_quantity_water']}
     yFmt=num1
 />
+
+```sql compressor_usage
+  select 
+    created_date as timestamp,
+    compressor_heating,
+    compressor_water
+  from smarthome_dwh.compressor_usage
+  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
+  order by timestamp desc
+```
+
+<LineChart
+    data={compressor_usage}
+    title="Compressors starts for {inputs.day.label}"
+    x=timestamp
+    y={['compressor_heating', 'compressor_water']}
+    xFmt="yyyy-mm-dd hh:mm:s"
+    yFmt=num1
+/>

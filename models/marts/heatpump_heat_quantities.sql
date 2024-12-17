@@ -14,6 +14,7 @@ heat_quantities as (
         wmz_bw as heat_quantity_water,
         wmz_hz as heat_quantity_heating
     from source
+    order by created_at desc
 )
 
 select * from heat_quantities

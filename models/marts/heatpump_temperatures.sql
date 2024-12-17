@@ -16,6 +16,7 @@ temperatures as (
         trl as temp_ruecklauf,
         tvl - trl as temp_delta_t
     from source
+    order by created_at desc
 
 )
 
