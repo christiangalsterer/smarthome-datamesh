@@ -1,0 +1,1 @@
+select * from analytics.heatpump_heat_quantities_daily

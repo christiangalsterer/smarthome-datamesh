@@ -2,25 +2,22 @@ with
 
 source as (
 
-    select * from {{ ref('stg_novelan__heatpumps') }}
+    select * from {{ ref('heatpump_heat_quantities') }}
 
 ),
 
 daily_values as
     (
-    select
-        wmz_bw,
-        strftime(created_date, '%Y-%m-%d') AS Date,
-        FIRST_VALUE(wmz_bw) OVER (PARTITION BY strftime(created_date, '%Y-%m-%d') ORDER BY created_date) AS First_Value,
-        LAST_VALUE(wmz_bw) OVER (PARTITION BY strftime(created_date, '%Y-%m-%d') ORDER BY created_date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS Last_Value
+
+    select 
+        date_trunc('day', created_date) as day,
+        max(heat_quantity_heating) - min(heat_quantity_heating) as heat_quantity_heating,
+        max(heat_quantity_water) - min(heat_quantity_water) as heat_quantity_water
     from source
+    group by date_trunc('day', created_date)
+    order by day desc
 )
 
 select * from daily_values
 
--- select 
---     Date,
---     First_Value,
---     Last_Value,
---     CAST(Last_Value AS DECIMAL) - CAST(First_Value AS DECIMAL) AS WMZ_BW_Difference
--- from daily_values
+
