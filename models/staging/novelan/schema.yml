@@ -13,27 +13,27 @@ models:
         description: ""
 
       - name: tvl
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: trl
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: twe
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: twa
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: thg
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: tbw
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: tbw_soll
@@ -45,11 +45,11 @@ models:
         description: ""
 
       - name: ta
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: ta_average
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: trl_ext
@@ -57,7 +57,7 @@ models:
         description: ""
 
       - name: trl_soll
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: mk1_soll
@@ -65,11 +65,11 @@ models:
         description: ""
 
       - name: wmz_hz
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: wmz_bw
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: wmz_sw
@@ -221,7 +221,7 @@ models:
         description: ""
 
       - name: mk2_soll
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: mk3_soll
@@ -229,7 +229,7 @@ models:
         description: ""
 
       - name: analogin
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: analogout_1
@@ -241,11 +241,11 @@ models:
         description: ""
 
       - name: sw_stand
-        data_type: double
+        data_type: varchar
         description: ""
 
       - name: sw_revision
-        data_type: double
+        data_type: varchar
         description: ""
 
       - name: wp_typ
@@ -253,21 +253,21 @@ models:
         description: ""
 
       - name: df
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: sphz
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: spwq
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: pth
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: wmstart
-        data_type: varchar
+        data_type: double
         description: ""

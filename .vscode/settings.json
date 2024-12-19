@@ -19,11 +19,14 @@
             "packages.yml"
         ]
     },
-    "editor.acceptSuggestionOnEnter": true,
+    "editor.acceptSuggestionOnEnter": "on",
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
         "strings": false
     },
     "editor.quickSuggestionsDelay": 300,
+    "conventionalCommits.scopes": [
+        "dbt"
+    ],
 }
