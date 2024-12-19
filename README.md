@@ -1,10 +1,10 @@
-Welcome to your new dbt project!
+Welcome to the Smarthome Datamesh project!
 
-### Using the starter project
+### What is this?
 
-Try running the following commands:
-- dbt run
-- dbt test
+
+### Using the project
+
 
 
 ### Resources:
