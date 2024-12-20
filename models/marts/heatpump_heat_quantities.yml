@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: heatpump_heat_quantities
+    description: ""
+    columns:
+      - name: created_at
+        data_type: bigint
+        description: ""
+
+      - name: created_date
+        data_type: timestamp
+        description: ""
+
+      - name: heat_quantity_water
+        data_type: double
+        description: ""
+
+      - name: heat_quantity_heating
+        data_type: double
+        description: ""

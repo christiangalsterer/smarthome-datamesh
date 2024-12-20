@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: heatpump_temperatures
+    description: ""
+    columns:
+      - name: created_at
+        data_type: bigint
+        description: ""
+
+      - name: created_date
+        data_type: timestamp
+        description: ""
+
+      - name: temp_vorlauf
+        data_type: double
+        description: ""
+
+      - name: temp_ruecklauf_soll
+        data_type: double
+        description: ""
+
+      - name: temp_ruecklauf
+        data_type: double
+        description: ""
+
+      - name: temp_delta_t
+        data_type: double
+        description: ""

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: heatpump_heat_quantities_daily
+    description: ""
+    columns:
+      - name: day
+        data_type: date
+        description: ""
+
+      - name: heat_quantity_heating
+        data_type: double
+        description: ""
+
+      - name: heat_quantity_water
+        data_type: double
+        description: ""

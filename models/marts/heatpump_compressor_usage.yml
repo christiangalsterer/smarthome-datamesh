@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: heatpump_compressor_usage
+    description: ""
+    columns:
+      - name: created_at
+        data_type: bigint
+        description: ""
+
+      - name: created_date
+        data_type: timestamp
+        description: ""
+
+      - name: compressor_heating
+        data_type: bigint
+        description: ""
+
+      - name: compressor_water
+        data_type: bigint
+        description: ""
