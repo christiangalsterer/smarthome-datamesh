@@ -7,23 +7,37 @@ models:
       - name: created_at
         data_type: bigint
         description: ""
+        data_tests:
+          - unique
+          - not_null
 
       - name: created_date
         data_type: timestamp
         description: ""
+        data_tests:
+          - unique
+          - not_null
 
       - name: temp_vorlauf
         data_type: double
         description: ""
+        data_tests:
+          - not_null
 
       - name: temp_ruecklauf_soll
         data_type: double
         description: ""
+        data_tests:
+          - not_null
 
       - name: temp_ruecklauf
         data_type: double
         description: ""
+        data_tests:
+          - not_null
 
       - name: temp_delta_t
         data_type: double
         description: ""
+        data_tests:
+          - not_null

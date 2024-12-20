@@ -2,7 +2,7 @@
   "name": "smarthome-datamesh",
   "version": "0.0.1",
   "scripts": {
-    "ci": "npm run clean && npm run duckdb:load && npm run dbt:build && npm run evidence:sources && npm run evidence:dev",
+    "ci": "npm run clean && npm run python:deps && npm run dbt:deps && npm run duckdb:load && npm run dbt:build && npm run evidence:sources && npm run evidence:dev",
     "clean": "rm -rf smarthome_dwh.duckdb",
     "duckdb:load":  "source venv/bin/activate && duckdb smarthome_dwh.duckdb < ingest_data/duckdb_load.sql",
     "dbt:build": "source venv/bin/activate && dbt build",
@@ -16,7 +16,8 @@
     "evidence:dev": "npm run dev --prefix evidence",
     "evidence:test": "npm run build --prefix evidence",
     "evidence:sources": "npm run sources --prefix evidence",
-    "evidence:preview": "npm run preview --prefix evidence"
+    "evidence:preview": "npm run preview --prefix evidence",
+    "python:deps": "source venv/bin/activate && pip install -r requirements.txt"
   },
   "engines": {
     "npm": ">=7.0.0",

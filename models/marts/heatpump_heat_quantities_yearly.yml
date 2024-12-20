@@ -7,11 +7,18 @@ models:
       - name: year
         data_type: date
         description: ""
+        data_tests:
+          - unique
+          - not_null
 
       - name: heat_quantity_heating
         data_type: double
         description: ""
+        data_tests:
+          - not_null
 
       - name: heat_quantity_water
         data_type: double
         description: ""
+        data_tests:
+          - not_null

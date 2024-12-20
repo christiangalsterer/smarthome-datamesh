@@ -7,15 +7,25 @@ models:
       - name: created_at
         data_type: bigint
         description: ""
+        data_tests:
+          - unique
+          - not_null
 
       - name: created_date
         data_type: timestamp
         description: ""
+        data_tests:
+          - unique
+          - not_null
 
       - name: heat_quantity_water
         data_type: double
         description: ""
+        data_tests:
+          - not_null
 
       - name: heat_quantity_heating
         data_type: double
         description: ""
+        data_tests:
+          - not_null
