@@ -1,7 +1,6 @@
 
 .DS_STORE
 .user.yml
-ingest/
 venv
 
 #dbt
