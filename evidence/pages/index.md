@@ -1,8 +1,20 @@
 ---
-title: Welcome to the SmartHome DataMesh
+title: SmartHome DataMesh
 ---
 
-<LastRefreshed/>
+```sql days
+  select
+      strftime(created_date, '%Y-%m-%d') as day
+  from smarthome_dwh.temperatures
+  order by day desc
+```
+
+```sql years
+  select
+      strftime(created_date, '%Y') as year
+  from smarthome_dwh.temperatures
+  order by year desc
+```
 
 ```sql heat_quantities_yearly
   select 
@@ -19,6 +31,7 @@ title: Welcome to the SmartHome DataMesh
     heat_quantity_heating,
     heat_quantity_water
   from smarthome_dwh.heat_quantities_monthly
+  where strftime(month, '%Y') like '${inputs.year.value}'
   order by month desc;
 ```
 
@@ -28,8 +41,14 @@ title: Welcome to the SmartHome DataMesh
     heat_quantity_heating,
     heat_quantity_water
   from smarthome_dwh.heat_quantities_daily
+  where strftime(day, '%Y-%m') like '2024-02'
   order by day desc;
 ```
+<LastRefreshed/>
+
+<Dropdown data={years} name=year value=year>
+</Dropdown>
+
 
 ## Yearly
 <BigValue 
@@ -44,6 +63,22 @@ title: Welcome to the SmartHome DataMesh
   value=heat_quantity_water
   sparkline=year
   fmt=num2
+/>
+
+<BarChart 
+    data={heat_quantities_yearly}
+    title="Heat Quantities over time for {inputs.year.label}"
+    x=year
+    y=heat_quantity_water
+/>
+
+<LineChart
+    data={heat_quantities_monthly}
+    title="Heat Quantities over time for {inputs.year.label}"
+    x=month
+    y={['heat_quantity_heating', 'heat_quantity_water']}
+    xFmt="yyyy-mm-dd"
+    yFmt=num1
 />
 
 ## Monthly
@@ -62,7 +97,19 @@ title: Welcome to the SmartHome DataMesh
   fmt=num2
 />
 
+<LineChart
+    data={heat_quantities_daily}
+    title="Heat Quantities over time for {inputs.year.label}"
+    x=day
+    y={['heat_quantity_heating', 'heat_quantity_water']}
+    xFmt="yyyy-mm-dd"
+    yFmt=num1
+/>
+
 ## Daily
+
+<Dropdown data={days} name=day value=day>
+</Dropdown>
 
 <BigValue 
   data={heat_quantities_daily} 
@@ -77,17 +124,6 @@ title: Welcome to the SmartHome DataMesh
   sparkline=day
   fmt=num2
 />
-
-```sql days
-  select
-      strftime(created_date, '%Y-%m-%d') as day
-  from smarthome_dwh.temperatures
-  order by day desc
-```
-
-<Dropdown data={days} name=day value=day>
-  <DropdownOption value="%" valueLabel="All Days"/>
-</Dropdown>
 
 ```sql temperatures
   select 
@@ -108,25 +144,6 @@ title: Welcome to the SmartHome DataMesh
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
-/>
-
-```sql heat_quantities
-  select 
-    created_date as timestamp,
-    heat_quantity_heating,
-    heat_quantity_water
-  from smarthome_dwh.heat_quantities
-  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
-  order by timestamp desc
-```
-
-<LineChart
-    data={heat_quantities}
-    title="Heat Quantities over time for {inputs.day.label}"
-    x=timestamp
-    y={['heat_quantity_heating', 'heat_quantity_water']}
-    xFmt="yyyy-mm-dd hh:mm:s"
-    yFmt=num1
 />
 
 ```sql compressor_usage

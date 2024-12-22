@@ -8,7 +8,6 @@ source as (
 
 yearly_values as
     (
-
     select 
         date_trunc('year', month) as year,
         sum(heat_quantity_heating) as heat_quantity_heating,
