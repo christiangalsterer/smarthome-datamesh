@@ -41,16 +41,19 @@ title: SmartHome DataMesh
     heat_quantity_heating,
     heat_quantity_water
   from smarthome_dwh.heat_quantities_daily
-  where strftime(day, '%Y-%m') like '2024-02'
+  where strftime(day, '%Y-%m') like '${inputs.year.value}-12'
   order by day desc;
 ```
 <LastRefreshed/>
 
+
+## Yearly
+
 <Dropdown data={years} name=year value=year>
 </Dropdown>
 
+<LineBreak/>
 
-## Yearly
 <BigValue 
   data={heat_quantities_yearly} 
   value=heat_quantity_heating
@@ -65,12 +68,23 @@ title: SmartHome DataMesh
   fmt=num2
 />
 
+<Grid cols=2>
+<BarChart 
+    data={heat_quantities_yearly}
+    title="Heat Quantities over time for {inputs.year.label}"
+    x=year
+    y=heat_quantity_heating
+    xFmt=yyyy
+/>
+
 <BarChart 
     data={heat_quantities_yearly}
     title="Heat Quantities over time for {inputs.year.label}"
     x=year
     y=heat_quantity_water
+    xFmt=yyyy
 />
+</Grid>
 
 <LineChart
     data={heat_quantities_monthly}
@@ -111,6 +125,14 @@ title: SmartHome DataMesh
 <Dropdown data={days} name=day value=day>
 </Dropdown>
 
+<DateRange
+    name=day_range
+    data={days}
+    dates=day
+/>
+
+<LineBreak/>
+
 <BigValue 
   data={heat_quantities_daily} 
   value=heat_quantity_heating
@@ -134,6 +156,7 @@ title: SmartHome DataMesh
     temp_delta_t
   from smarthome_dwh.temperatures
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
+  --where timestamp between '${inputs.day_range.start}' and '${inputs.day_range.end}'
   order by timestamp desc
 ```
 

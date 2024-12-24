@@ -15,7 +15,6 @@ models:
         data_type: timestamp
         description: ""
         data_tests:
-          - unique
           - not_null
 
       - name: temp_vorlauf

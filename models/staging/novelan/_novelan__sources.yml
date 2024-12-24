@@ -4,7 +4,7 @@ sources:
   - name: novelan
     schema: raw
     tables:
-      - name: novelan_heatpump
+      - name: novelan_heatpump_v2
         columns:
           - name: datum
             data_type: timestamp

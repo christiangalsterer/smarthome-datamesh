@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_novelan__heatpumps
+  - name: stg_novelan__heatpumps_v2
     description: ""
     columns:
       - name: created_date

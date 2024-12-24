@@ -28,7 +28,7 @@ models:
   novelan:
     +materialized: table
     # staging:
-    #   +materialized: view
+    #   +materialized: incremental
 
 
 # dispatch:

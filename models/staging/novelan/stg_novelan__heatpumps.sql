@@ -1,8 +1,6 @@
-
-
 with source as (
 
-    select * from {{ source('novelan', 'novelan_heatpump') }}
+    select distinct on(zeitstempel) * from {{ source('novelan', 'novelan_heatpump_v2') }}
 
 ),
 
