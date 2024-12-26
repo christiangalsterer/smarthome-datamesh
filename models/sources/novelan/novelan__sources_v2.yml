@@ -1,0 +1,143 @@
+version: 2
+
+sources:
+  - name: novelan
+    schema: raw
+    tables:
+      - name: novelan_heatpump_v2
+        columns:
+          - name: datum
+            data_type: timestamp
+          - name: zeitstempel
+            data_type: bigint
+          - name: tvl
+            data_type: varchar
+          - name: trl
+            data_type: varchar
+          - name: twe
+            data_type: varchar
+          - name: twa
+            data_type: varchar
+          - name: thg
+            data_type: varchar
+          - name: tbw
+            data_type: varchar
+          - name: tbw_soll
+            data_type: bigint
+          - name: tfb1
+            data_type: bigint
+          - name: ta
+            data_type: varchar
+          - name: mitteltemperatur
+            data_type: varchar
+          - name: trl_ext
+            data_type: bigint
+          - name: trl_soll
+            data_type: varchar
+          - name: mk1_soll
+            data_type: bigint
+          - name: wmz_hz
+            data_type: varchar
+          - name: wmz_bw
+            data_type: varchar
+          - name: wmz_sw
+            data_type: bigint
+          - name: error_id
+            data_type: bigint
+          - name: bivalence
+            data_type: bigint
+          - name: demand
+            data_type: bigint
+          - name: hdin
+            data_type: bigint
+          - name: ndin
+            data_type: bigint
+          - name: motin
+            data_type: bigint
+          - name: asdin
+            data_type: bigint
+          - name: evuin
+            data_type: bigint
+          - name: hupout
+            data_type: bigint
+          - name: zupout
+            data_type: bigint
+          - name: bupout
+            data_type: bigint
+          - name: zw2sstout
+            data_type: bigint
+          - name: ma1out
+            data_type: bigint
+          - name: mz1out
+            data_type: bigint
+          - name: zipout
+            data_type: bigint
+          - name: vd1out
+            data_type: bigint
+          - name: vd2out
+            data_type: bigint
+          - name: venout
+            data_type: bigint
+          - name: avout
+            data_type: bigint
+          - name: vboout
+            data_type: bigint
+          - name: zw1out
+            data_type: bigint
+          - name: supout
+            data_type: bigint
+          - name: fp2out
+            data_type: bigint
+          - name: ma2out
+            data_type: bigint
+          - name: mz2out
+            data_type: bigint
+          - name: ma3out
+            data_type: bigint
+          - name: mz3out
+            data_type: bigint
+          - name: fp3out
+            data_type: bigint
+          - name: zw3sstout
+            data_type: bigint
+          - name: slpout
+            data_type: bigint
+          - name: swtin
+            data_type: bigint
+          - name: tss
+            data_type: bigint
+          - name: tsk
+            data_type: bigint
+          - name: tfb_2
+            data_type: bigint
+          - name: tfb_3
+            data_type: bigint
+          - name: tee
+            data_type: bigint
+          - name: mk2_soll
+            data_type: varchar
+          - name: mk3_soll
+            data_type: bigint
+          - name: analogin
+            data_type: varchar
+          - name: analogout_1
+            data_type: bigint
+          - name: analogout_2
+            data_type: bigint
+          - name: sw_stand
+            data_type: double
+          - name: sw_revision
+            data_type: double
+          - name: wp_typ
+            data_type: bigint
+          - name: df
+            data_type: varchar
+          - name: sphz
+            data_type: varchar
+          - name: spwq
+            data_type: varchar
+          - name: pth
+            data_type: varchar
+          - name: wmstart
+            data_type: varchar
+

@@ -29,4 +29,7 @@
     "conventionalCommits.scopes": [
         "dbt"
     ],
+    "cSpell.words": [
+        "novelan"
+    ],
 }

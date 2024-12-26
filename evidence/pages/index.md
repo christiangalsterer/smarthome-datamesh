@@ -18,7 +18,7 @@ title: SmartHome DataMesh
 
 ```sql heat_quantities_yearly
   select 
-    year,
+    strftime(year, '%Y') as year,
     heat_quantity_heating,
     heat_quantity_water
   from smarthome_dwh.heat_quantities_yearly
@@ -57,14 +57,12 @@ title: SmartHome DataMesh
 <BigValue 
   data={heat_quantities_yearly} 
   value=heat_quantity_heating
-  sparkline=year
   fmt=num2
 />
 
 <BigValue 
   data={heat_quantities_yearly} 
   value=heat_quantity_water
-  sparkline=year
   fmt=num2
 />
 

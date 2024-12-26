@@ -1,0 +1,122 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: novelan_heatpump_v1
+        columns:
+          - name: datum
+            data_type: timestamp
+          - name: zeitstempel
+            data_type: bigint
+          - name: hup
+            data_type: bigint
+          - name: zup
+            data_type: bigint
+          - name: bup
+            data_type: bigint
+          - name: zw2
+            data_type: bigint
+          - name: ma1
+            data_type: bigint
+          - name: mz1
+            data_type: bigint
+          - name: zip
+            data_type: bigint
+          - name: vd1
+            data_type: bigint
+          - name: vd2
+            data_type: bigint
+          - name: vent
+            data_type: bigint
+          - name: av
+            data_type: bigint
+          - name: vbs
+            data_type: bigint
+          - name: zw1
+            data_type: bigint
+          - name: hd
+            data_type: bigint
+          - name: nd
+            data_type: bigint
+          - name: mot
+            data_type: bigint
+          - name: asd
+            data_type: bigint
+          - name: evu
+            data_type: bigint
+          - name: tfb1
+            data_type: double
+          - name: tbw
+            data_type: double
+          - name: ta
+            data_type: double
+          - name: trlext
+            data_type: double
+          - name: trl
+            data_type: double
+          - name: tvl
+            data_type: double
+          - name: thg
+            data_type: double
+          - name: twqaus
+            data_type: double
+          - name: twqein
+            data_type: double
+          - name: trlsoll
+            data_type: double
+          - name: tmk1soll
+            data_type: bigint
+          - name: ai1div
+            data_type: bigint
+          - name: sup
+            data_type: bigint
+          - name: fup2
+            data_type: bigint
+          - name: ma2
+            data_type: bigint
+          - name: mz2
+            data_type: bigint
+          - name: ma3
+            data_type: bigint
+          - name: mz3
+            data_type: bigint
+          - name: fup3
+            data_type: bigint
+          - name: zw3
+            data_type: bigint
+          - name: slp
+            data_type: bigint
+          - name: ao1
+            data_type: bigint
+          - name: ao2
+            data_type: double
+          - name: swt
+            data_type: bigint
+          - name: tss
+            data_type: double
+          - name: tsk
+            data_type: double
+          - name: tfb2
+            data_type: double
+          - name: tfb3
+            data_type: double
+          - name: tee
+            data_type: double
+          - name: ai1
+            data_type: double
+          - name: tmk2soll
+            data_type: double
+          - name: tmk3soll
+            data_type: bigint
+          - name: df
+            data_type: double
+          - name: sphz
+            data_type: double
+          - name: spwq
+            data_type: double
+          - name: pth
+            data_type: double
+          - name: wmstart
+            data_type: double
+

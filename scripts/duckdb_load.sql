@@ -1,3 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS raw;
+DROP TABLE IF EXISTS raw.novelan_heatpump_v1;
+CREATE TABLE IF NOT EXISTS raw.novelan_heatpump_v1 AS SELECT * FROM read_csv('ingest/novelan/heatpump/v1/*.csv', decimal_separator = ',');
 DROP TABLE IF EXISTS raw.novelan_heatpump_v2;
 CREATE TABLE IF NOT EXISTS raw.novelan_heatpump_v2 AS SELECT * FROM read_csv('ingest/novelan/heatpump/v2/*.csv', decimal_separator = ',', types={'AnalogOut_2': 'VARCHAR', 'TBW_Soll': 'VARCHAR'});
