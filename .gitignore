@@ -2,6 +2,7 @@
 .DS_STORE
 .user.yml
 venv
+.env
 
 #dbt
 target/
