@@ -2,6 +2,20 @@
 title: SmartHome DataMesh
 ---
 
+```sql years
+  select
+      strftime(created_date, '%Y') as year
+  from smarthome_dwh.temperatures
+  order by year desc
+```
+
+```sql months
+  select
+      strftime(created_date, '%Y-%m') as month
+  from smarthome_dwh.temperatures
+  order by month desc
+```
+
 ```sql days
   select
       strftime(created_date, '%Y-%m-%d') as day
@@ -9,11 +23,14 @@ title: SmartHome DataMesh
   order by day desc
 ```
 
-```sql years
-  select
-      strftime(created_date, '%Y') as year
-  from smarthome_dwh.temperatures
-  order by year desc
+```sql heat_quantities_current_year
+  select 
+    strftime(year, '%Y') as year,
+    heat_quantity_heating,
+    heat_quantity_water
+  from smarthome_dwh.heat_quantities_yearly
+  where strftime(year, '%Y') like date_part('year', current_date())
+  order by year desc;
 ```
 
 ```sql heat_quantities_yearly
@@ -23,6 +40,26 @@ title: SmartHome DataMesh
     heat_quantity_water
   from smarthome_dwh.heat_quantities_yearly
   order by year desc;
+```
+
+```sql heat_quantities_last_13_month
+  select 
+    month,
+    heat_quantity_heating,
+    heat_quantity_water
+  from smarthome_dwh.heat_quantities_monthly
+  where month between current_date() - INTERVAL 13 MONTH and current_date()
+  order by month desc;
+```
+
+```sql heat_quantities_current_month
+  select 
+    day,
+    heat_quantity_heating,
+    heat_quantity_water
+  from smarthome_dwh.heat_quantities_daily
+  where day between current_date() - INTERVAL 1 MONTH and current_date()
+  order by day desc;
 ```
 
 ```sql heat_quantities_monthly
@@ -35,17 +72,121 @@ title: SmartHome DataMesh
   order by month desc;
 ```
 
+```sql heat_quantities_month
+  select 
+    month,
+    heat_quantity_heating,
+    heat_quantity_water
+  from smarthome_dwh.heat_quantities_monthly
+  where strftime(month, '%Y-%m') like '${inputs.month.value}'
+  order by month desc;
+```
+
 ```sql heat_quantities_daily
   select 
     day,
     heat_quantity_heating,
     heat_quantity_water
   from smarthome_dwh.heat_quantities_daily
-  where strftime(day, '%Y-%m') like '${inputs.year.value}-12'
+  where strftime(day, '%Y-%m') like '${inputs.month.value}'
   order by day desc;
 ```
+
+```sql temperatures_day
+  select 
+    created_date as timestamp,
+    temp_ruecklauf,
+    temp_ruecklauf_soll,
+    temp_vorlauf,
+    temp_delta_t
+  from smarthome_dwh.temperatures
+  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
+  order by timestamp desc
+```
+
+```sql temperatures_last_7_days
+  select 
+    created_date as timestamp,
+    temp_ruecklauf,
+    temp_ruecklauf_soll,
+    temp_vorlauf,
+    temp_delta_t
+  from smarthome_dwh.temperatures
+  where timestamp between current_date() - INTERVAL 7 DAY and current_date()
+  order by timestamp desc
+```
+
+```sql compressor_usage_day
+  select 
+    created_date as timestamp,
+    compressor_heating,
+    compressor_water
+  from smarthome_dwh.compressor_usage
+  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
+  order by timestamp desc
+```
+
+```sql compressor_usage_last_7_days
+  select 
+    created_date as timestamp,
+    compressor_heating,
+    compressor_water
+  from smarthome_dwh.compressor_usage
+  where created_date between current_date() - INTERVAL 7 DAY and current_date()
+  order by timestamp desc
+```
+
 <LastRefreshed/>
 
+## Overview
+
+<BigValue 
+  data={heat_quantities_current_year} 
+  value=heat_quantity_heating
+  fmt=num2
+/>
+
+<BigValue 
+  data={heat_quantities_current_year} 
+  value=heat_quantity_water
+  fmt=num2
+/>
+
+<LineChart
+    data={heat_quantities_last_13_month}
+    title="Heat Quantities last 13 months"
+    x=month
+    y={['heat_quantity_heating', 'heat_quantity_water']}
+    xFmt="yyyy-mm-dd"
+    yFmt=num1
+/>
+
+<LineChart
+    data={heat_quantities_current_month}
+    title="Heat Quantities current month"
+    x=day
+    y={['heat_quantity_heating', 'heat_quantity_water']}
+    xFmt="yyyy-mm-dd"
+    yFmt=num1
+/>
+
+<LineChart
+    data={temperatures_last_7_days}
+    title="Temperatures last 7 days"
+    x=timestamp
+    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
+    xFmt="yyyy-mm-dd hh:mm:s"
+    yFmt=num2
+/>
+
+<LineChart
+    data={compressor_usage_last_7_days}
+    title="Compressors usage for last 7 days"
+    x=timestamp
+    y={['compressor_heating', 'compressor_water']}
+    xFmt="yyyy-mm-dd hh:mm:s"
+    yFmt=num1
+/>
 
 ## Yearly
 
@@ -54,22 +195,10 @@ title: SmartHome DataMesh
 
 <LineBreak/>
 
-<BigValue 
-  data={heat_quantities_yearly} 
-  value=heat_quantity_heating
-  fmt=num2
-/>
-
-<BigValue 
-  data={heat_quantities_yearly} 
-  value=heat_quantity_water
-  fmt=num2
-/>
-
 <Grid cols=2>
 <BarChart 
     data={heat_quantities_yearly}
-    title="Heat Quantities over time for {inputs.year.label}"
+    title="Heat Quantities Heating over time"
     x=year
     y=heat_quantity_heating
     xFmt=yyyy
@@ -77,7 +206,7 @@ title: SmartHome DataMesh
 
 <BarChart 
     data={heat_quantities_yearly}
-    title="Heat Quantities over time for {inputs.year.label}"
+    title="Heat Quantities Water over time"
     x=year
     y=heat_quantity_water
     xFmt=yyyy
@@ -86,7 +215,7 @@ title: SmartHome DataMesh
 
 <LineChart
     data={heat_quantities_monthly}
-    title="Heat Quantities over time for {inputs.year.label}"
+    title="Heat Quantities for {inputs.year.label}"
     x=month
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
@@ -95,15 +224,20 @@ title: SmartHome DataMesh
 
 ## Monthly
 
+<Dropdown data={months} name=month value=month>
+</Dropdown>
+
+<LineBreak/>
+
 <BigValue 
-  data={heat_quantities_monthly} 
+  data={heat_quantities_month} 
   value=heat_quantity_heating
   sparkline=month
   fmt=num2
 />
 
 <BigValue 
-  data={heat_quantities_monthly} 
+  data={heat_quantities_month} 
   value=heat_quantity_water
   sparkline=month
   fmt=num2
@@ -111,7 +245,7 @@ title: SmartHome DataMesh
 
 <LineChart
     data={heat_quantities_daily}
-    title="Heat Quantities over time for {inputs.year.label}"
+    title="Heat Quantities over time for {inputs.month.label}"
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
@@ -123,12 +257,6 @@ title: SmartHome DataMesh
 <Dropdown data={days} name=day value=day>
 </Dropdown>
 
-<DateRange
-    name=day_range
-    data={days}
-    dates=day
-/>
-
 <LineBreak/>
 
 <BigValue 
@@ -145,43 +273,21 @@ title: SmartHome DataMesh
   fmt=num2
 />
 
-```sql temperatures
-  select 
-    created_date as timestamp,
-    temp_ruecklauf,
-    temp_ruecklauf_soll,
-    temp_vorlauf,
-    temp_delta_t
-  from smarthome_dwh.temperatures
-  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
-  --where timestamp between '${inputs.day_range.start}' and '${inputs.day_range.end}'
-  order by timestamp desc
-```
-
 <LineChart
-    data={temperatures}
-    title="Temperatures over time for {inputs.day.label}"
+    data={temperatures_day}
+    title="Temperatures for {inputs.day.label}"
     x=timestamp
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
 />
 
-```sql compressor_usage
-  select 
-    created_date as timestamp,
-    compressor_heating,
-    compressor_water
-  from smarthome_dwh.compressor_usage
-  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
-  order by timestamp desc
-```
-
 <LineChart
-    data={compressor_usage}
+    data={compressor_usage_day}
     title="Compressors usage for {inputs.day.label}"
     x=timestamp
     y={['compressor_heating', 'compressor_water']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num1
 />
+
