@@ -1,7 +1,8 @@
 version: 2
 
 sources:
-  - name: raw
+  - name: novelan
+    schema: raw
     tables:
       - name: novelan_heatpump_v1
         columns:

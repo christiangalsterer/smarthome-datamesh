@@ -1,0 +1,233 @@
+version: 2
+
+models:
+  - name: stg_novelan__heatpumps_v1
+    description: ""
+    columns:
+      - name: created_date
+        data_type: timestamp
+        description: ""
+
+      - name: created_at
+        data_type: bigint
+        description: ""
+
+      - name: hup
+        data_type: bigint
+        description: ""
+
+      - name: zup
+        data_type: bigint
+        description: ""
+
+      - name: bupout
+        data_type: bigint
+        description: ""
+
+      - name: zw2
+        data_type: bigint
+        description: ""
+
+      - name: ma1
+        data_type: bigint
+        description: ""
+
+      - name: mz1
+        data_type: bigint
+        description: ""
+
+      - name: zip
+        data_type: bigint
+        description: ""
+
+      - name: vd1out
+        data_type: bigint
+        description: ""
+
+      - name: vd2
+        data_type: bigint
+        description: ""
+
+      - name: vent
+        data_type: bigint
+        description: ""
+
+      - name: av
+        data_type: bigint
+        description: ""
+
+      - name: vbs
+        data_type: bigint
+        description: ""
+
+      - name: zw1
+        data_type: bigint
+        description: ""
+
+      - name: hd
+        data_type: bigint
+        description: ""
+
+      - name: nd
+        data_type: bigint
+        description: ""
+
+      - name: mot
+        data_type: bigint
+        description: ""
+
+      - name: asd
+        data_type: bigint
+        description: ""
+
+      - name: evu
+        data_type: bigint
+        description: ""
+
+      - name: tfb1
+        data_type: double
+        description: ""
+
+      - name: tbw
+        data_type: double
+        description: ""
+
+      - name: ta
+        data_type: double
+        description: ""
+
+      - name: trlext
+        data_type: double
+        description: ""
+
+      - name: trl
+        data_type: double
+        description: ""
+
+      - name: tvl
+        data_type: double
+        description: ""
+
+      - name: thg
+        data_type: double
+        description: ""
+
+      - name: twqaus
+        data_type: double
+        description: ""
+
+      - name: twqein
+        data_type: double
+        description: ""
+
+      - name: trl_soll
+        data_type: double
+        description: ""
+
+      - name: tmk1soll
+        data_type: bigint
+        description: ""
+
+      - name: ai1div
+        data_type: bigint
+        description: ""
+
+      - name: sup
+        data_type: bigint
+        description: ""
+
+      - name: fup2
+        data_type: bigint
+        description: ""
+
+      - name: ma2
+        data_type: bigint
+        description: ""
+
+      - name: mz2
+        data_type: bigint
+        description: ""
+
+      - name: ma3
+        data_type: bigint
+        description: ""
+
+      - name: mz3
+        data_type: bigint
+        description: ""
+
+      - name: fup3
+        data_type: bigint
+        description: ""
+
+      - name: zw3
+        data_type: bigint
+        description: ""
+
+      - name: slp
+        data_type: bigint
+        description: ""
+
+      - name: ao1
+        data_type: bigint
+        description: ""
+
+      - name: ao2
+        data_type: double
+        description: ""
+
+      - name: swt
+        data_type: bigint
+        description: ""
+
+      - name: tss
+        data_type: double
+        description: ""
+
+      - name: tsk
+        data_type: double
+        description: ""
+
+      - name: tfb2
+        data_type: double
+        description: ""
+
+      - name: tfb3
+        data_type: double
+        description: ""
+
+      - name: tee
+        data_type: double
+        description: ""
+
+      - name: ai1
+        data_type: double
+        description: ""
+
+      - name: tmk2soll
+        data_type: double
+        description: ""
+
+      - name: tmk3soll
+        data_type: bigint
+        description: ""
+
+      - name: df
+        data_type: double
+        description: ""
+
+      - name: sphz
+        data_type: double
+        description: ""
+
+      - name: spwq
+        data_type: double
+        description: ""
+
+      - name: pth
+        data_type: double
+        description: ""
+
+      - name: wmstart
+        data_type: double
+        description: ""
