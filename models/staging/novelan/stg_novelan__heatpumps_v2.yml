@@ -37,7 +37,7 @@ models:
         description: ""
 
       - name: tbw_soll
-        data_type: varchar
+        data_type: double
         description: ""
 
       - name: tfb1

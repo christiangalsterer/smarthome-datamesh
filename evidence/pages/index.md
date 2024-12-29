@@ -108,7 +108,9 @@ title: SmartHome DataMesh
     temp_ruecklauf,
     temp_ruecklauf_soll,
     temp_vorlauf,
-    temp_delta_t
+    temp_delta_t,
+    temp_water,
+    temp_water_soll
   from smarthome_dwh.temperatures
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
@@ -288,6 +290,15 @@ title: SmartHome DataMesh
     title="Temperatures for {inputs.day.label}"
     x=timestamp
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
+    xFmt="yyyy-mm-dd hh:mm:s"
+    yFmt=num2
+/>
+
+<LineChart
+    data={temperatures_day}
+    title="Temperatures for {inputs.day.label}"
+    x=timestamp
+    y={['temp_water', 'temp_water_soll']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
 />
