@@ -7,6 +7,7 @@
     "clean": "npm run duckdb:clean && rm -rf evidence/node_modules",
     "duckdb:clean":  "rm -rf smarthome_dwh.duckdb",
     "duckdb:load":  "source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql",
+    "motherduck:load":  "source venv/bin/activate && duckdb < scripts/motherduck_load.sql",
     "dbt:build": "source venv/bin/activate && dbt build",
     "dbt:deps": "source venv/bin/activate && dbt deps",
     "dbt:test": "source venv/bin/activate && dbt test",

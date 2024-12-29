@@ -1,4 +1,5 @@
-ATTACH 'md:';    
+ATTACH 'md:';
+DROP DATABASE IF EXISTS smarthome_dwh;
 CREATE DATABASE smarthome_dwh;
 USE smarthome_dwh;
 CREATE SCHEMA IF NOT EXISTS raw;
