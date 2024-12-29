@@ -13,8 +13,8 @@ daily_values as
         max(heat_quantity_heating) - min(heat_quantity_heating) as heat_quantity_heating,
         max(heat_quantity_water) - min(heat_quantity_water) as heat_quantity_water
     from source
+    where heat_quantity_heating > 0 and heat_quantity_water > 0
     group by date_trunc('day', created_date)
-    HAVING (min(heat_quantity_heating) > 0 AND min(heat_quantity_water) > 0)
     order by day desc
 )
 

@@ -92,6 +92,16 @@ title: SmartHome DataMesh
   order by day desc;
 ```
 
+```sql heat_quantities_day
+  select 
+    created_date as timestamp,
+    heat_quantity_heating,
+    heat_quantity_water
+  from smarthome_dwh.heat_quantities
+  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
+  order by timestamp desc
+```
+
 ```sql temperatures_day
   select 
     created_date as timestamp,
@@ -280,6 +290,15 @@ title: SmartHome DataMesh
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+/>
+
+<LineChart
+    data={heat_quantities_day}
+    title="Heat Quantities for {inputs.day.label}"
+    x=timestamp
+    y={['heat_quantity_heating', 'heat_quantity_water']}
+    xFmt="yyyy-mm-dd"
+    yFmt=num1
 />
 
 <LineChart
