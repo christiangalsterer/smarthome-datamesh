@@ -3,14 +3,14 @@ title: SmartHome DataMesh
 ---
 
 ```sql years
-  select
+  select distinct
       strftime(created_date, '%Y') as year
   from smarthome_dwh.temperatures
   order by year desc
 ```
 
 ```sql months
-  select
+  select distinct
       strftime(created_date, '%Y-%m') as month
   from smarthome_dwh.temperatures
   order by month desc
