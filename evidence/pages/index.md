@@ -17,7 +17,7 @@ title: SmartHome DataMesh
 ```
 
 ```sql days
-  select
+  select distinct
       strftime(created_date, '%Y-%m-%d') as day
   from smarthome_dwh.temperatures
   order by day desc
