@@ -44,8 +44,7 @@ jobs:
           source venv/bin/activate && ./duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
       - name: Run dbt
         run: |
-          source venv/bin/activate && dbt run
-          source venv/bin/activate && dbt test
+          source venv/bin/activate && dbt build
       - name: Install Evidence
         run: npm run evidence:install
       - name: Source data to Evidence
