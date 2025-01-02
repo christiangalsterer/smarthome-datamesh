@@ -36,7 +36,8 @@ jobs:
       - name: Build and test the project
         run: |
           rm -rf smarthome_dwh.duckdb
+          python3 -m venv venv
           source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
           source venv/bin/activate && dbt run
           source venv/bin/activate && dbt test
-        
+  
