@@ -15,4 +15,22 @@ permissions:
 
 jobs:
   ci:
-    uses: christiangalsterer/github-actions/.github/workflows/node_ci.yaml@main
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      matrix:
+        node-version: ['18.x', '20.x', '21.x', '22.x', '23.x']
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13  
+      - run: npm run ci
