@@ -15,10 +15,6 @@ permissions:
 
 jobs:
   ci:
-    strategy:
-      matrix:
-        node-version: ['18.x', '20.x', '21.x', '22.x', '23.x']
-
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -27,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22.x
           cache: 'npm'
       - name: Set up Python 3.13
         uses: actions/setup-python@v5
@@ -49,5 +45,11 @@ jobs:
       - name: Run dbt
         run: |
           source venv/bin/activate && dbt run
-          source venv/bin/activate && dbt test            
+          source venv/bin/activate && dbt test
+      - name: Install Evidence
+        run: npm run evidence:install
+      - name: Source data to Evidence
+        run: npm run evidence:sources && npm run evidence:test 
+      - name: Test Evidence
+        run: npm run evidence:test   
   
