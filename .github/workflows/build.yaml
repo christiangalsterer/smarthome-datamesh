@@ -34,3 +34,4 @@ jobs:
         with:
           python-version: 3.13  
       - run: npm run ci
+        shell: bash
