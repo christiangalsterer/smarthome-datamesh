@@ -15,4 +15,7 @@ permissions:
 
 jobs:
   ci:
+    defaults:
+      run:
+        shell: bash
     uses: christiangalsterer/github-actions/.github/workflows/node_ci.yaml@main
