@@ -33,5 +33,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.13  
-      - run: source text.txt
-        shell: bash
+      - name: Build and test the project
+        run: |
+          rm -rf smarthome_dwh.duckdb
+          source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
+          source venv/bin/activate && dbt run
+          source venv/bin/activate && dbt test
+        
