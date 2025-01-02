@@ -28,7 +28,8 @@
     "editor.quickSuggestionsDelay": 300,
     "conventionalCommits.scopes": [
         "dbt",
-        "evidence"
+        "evidence",
+        "npm"
     ],
     "cSpell.words": [
         "novelan"
