@@ -16,5 +16,3 @@ permissions:
 jobs:
   ci:
     uses: christiangalsterer/github-actions/.github/workflows/node_ci.yaml@main
-    with:
-      shell: bash
