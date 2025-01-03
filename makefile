@@ -18,7 +18,7 @@ duckdb-clean:
 
 duckdb-load:
 	@echo "Loading data into DuckDB database..."
-	source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
+	source venv/bin/activate && ./duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
 
 motherduck-load:
 	@echo "Loading data into MotherDuck database..."
