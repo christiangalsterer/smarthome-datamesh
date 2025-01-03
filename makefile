@@ -82,5 +82,5 @@ evidence-preview:
 
 python-deps:
 	@echo "Installing Python dependencies..."
-	source venv/bin/activate && pip-compile
+	python3 -m venv venv
 	source venv/bin/activate && pip install -r requirements.txt
