@@ -2,7 +2,7 @@
   "name": "smarthome-datamesh",
   "version": "0.0.1",
   "scripts": {
-    "build": "npm run duckdb:clean && npm run duckdb:load && npm run dbt:run && npm run evidence:sources && npm run evidence:dev",
+    "build": "npm run duckdb:clean && npm run duckdb:load && npm run dbt:build && npm run evidence:sources && npm run evidence:dev",
     "ci": "npm i --save-dev && npm run clean && npm run python:deps && npm run dbt:deps && npm run duckdb:load && npm run dbt:build && npm run evidence:install && npm run evidence:sources && npm run evidence:test",
     "clean": "npm run duckdb:clean && rm -rf evidence/node_modules",
     "duckdb:clean":  "rm -rf smarthome_dwh.duckdb",
