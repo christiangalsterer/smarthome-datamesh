@@ -1,3 +1,5 @@
+SHELL = /bin/bash
+
 .PHONY: build ci clean duckdb-clean duckdb-load motherduck-load dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
 
 build: duckdb-clean duckdb-load dbt-build dbt-docs-generate evidence-sources evidence-dev
@@ -83,4 +85,4 @@ evidence-preview:
 python-deps:
 	@echo "Installing Python dependencies..."
 	python3 -m venv venv
-	. venv/bin/activate && pip install -r requirements.txt
+	source venv/bin/activate && pip install -r requirements.txt
