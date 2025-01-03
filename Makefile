@@ -42,17 +42,14 @@ dbt-run:
 
 dbt-docs-generate:
 	@echo "Generating dbt documentation..."
-	npm run dbt:docs:generate
-	dbt docs generate
+	source venv/bin/activate && dbt docs generate
 
 dbt-docs-serve:
 	@echo "Serving dbt documentation..."
-	npm run dbt:docs:serve
-	dbt docs serve
+	source venv/bin/activate && dbt docs serve
 
-dbt-docs-build:
+dbt-docs-build: dbt-docs-generate dbt-docs-serve
 	@echo "Building dbt documentation..."
-	npm run dbt:docs:generate && npm run dbt:docs:serve
 
 evidence-build:
 	@echo "Building Evidence..."
