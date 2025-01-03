@@ -22,7 +22,7 @@
     "evidence:test": "npm run build --prefix evidence",
     "evidence:sources": "npm run sources --prefix evidence",
     "evidence:preview": "npm run preview --prefix evidence",
-    "python:deps": "source venv/bin/activate && pip install -r requirements.txt"
+    "python:deps": "source venv/bin/activate && pip-compile && pip install -r requirements.txt"
   },
   "engines": {
     "npm": ">=7.0.0",

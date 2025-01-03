@@ -2,7 +2,7 @@
 dbt-duckdb>=1.9.0
 
 # dbt Core 1.
-dbt-core>=1.8.0
+dbt-core>=1.9.0, <2.0.0
 
 #
 shandy-sqlfmt[jinjafmt]>=0.24.0
