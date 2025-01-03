@@ -1,0 +1,86 @@
+.PHONY: build ci clean duckdb-clean duckdb-load motherduck-load dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
+
+build: duckdb-clean duckdb-load dbt-build dbt-docs-generate evidence-sources evidence-dev
+	@echo "Building...""
+
+ci: clean python-deps duckdb-load dbt-deps dbt-build dbt-docs-generate motherduck-load evidence-install evidence-sources evidence-test
+	@echo "Running CI..."
+
+clean: duckdb-clean
+	@echo "Cleaning..."
+	rm -rf evidence/node_modules
+
+duckdb-clean:
+	@echo "Removing DuckDB database..."
+	rm -rf smarthome_dwh.duckdb
+
+duckdb-load:
+	@echo "Loading data into DuckDB database..."
+	source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
+
+motherduck-load:
+	@echo "Loading data into MotherDuck database..."
+	source venv/bin/activate && duckdb < scripts/motherduck_load.sql
+
+dbt-build:
+	@echo "Building dbt models..."
+	source venv/bin/activate && dbt build
+
+dbt-deps:
+	@echo "Installing dbt dependencies..."
+	source venv/bin/activate && dbt deps
+
+dbt-test:
+	@echo "Testing dbt models..."
+	source venv/bin/activate && dbt test
+
+dbt-run:
+	@echo "Running dbt models..."
+	source venv/bin/activate && dbt run
+
+dbt-docs-generate:
+	@echo "Generating dbt documentation..."
+	npm run dbt:docs:generate
+	dbt docs generate
+
+dbt-docs-serve:
+	@echo "Serving dbt documentation..."
+	npm run dbt:docs:serve
+	dbt docs serve
+
+dbt-docs-build:
+	@echo "Building dbt documentation..."
+	npm run dbt:docs:generate && npm run dbt:docs:serve
+
+evidence-build:
+	@echo "Building Evidence..."
+	npm run build --prefix evidence
+
+evidence-build-strict:
+	@echo "Building strict Evidence..."
+	npm run build:strict --prefix evidence
+
+evidence-dev:
+	@echo "Running Evidence..."
+	npm run dev --prefix evidence
+
+evidence-install:
+	@echo "Installing Evidence dependencies..."
+	npm install --prefix evidence
+
+evidence-test:
+	@echo "Testing Evidence..."
+	npm run test --prefix evidence
+
+evidence-sources:
+	@echo "Generating Evidence sources..."
+	npm run sources --prefix evidence
+
+evidence-preview:
+	@echo "Previewing Evidence..."
+	npm run preview --prefix evidence
+
+python-deps:
+	@echo "Installing Python dependencies..."
+	source venv/bin/activate && pip-compile
+	source venv/bin/activate && pip install -r requirements.txt
