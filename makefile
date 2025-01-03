@@ -1,4 +1,4 @@
-SHELL = /bin/bash
+# SHELL = /bin/bash
 
 .PHONY: build ci clean duckdb-clean duckdb-load motherduck-load dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
 
@@ -18,27 +18,27 @@ duckdb-clean:
 
 duckdb-load:
 	@echo "Loading data into DuckDB database..."
-	source venv/bin/activate && ./duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
+	. venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
 
 motherduck-load:
 	@echo "Loading data into MotherDuck database..."
-	source venv/bin/activate && duckdb < scripts/motherduck_load.sql
+	. venv/bin/activate && duckdb < scripts/motherduck_load.sql
 
 dbt-build:
 	@echo "Building dbt models..."
-	source venv/bin/activate && dbt build
+	. venv/bin/activate && dbt build
 
 dbt-deps:
 	@echo "Installing dbt dependencies..."
-	source venv/bin/activate && dbt deps
+	. venv/bin/activate && dbt deps
 
 dbt-test:
 	@echo "Testing dbt models..."
-	source venv/bin/activate && dbt test
+	. venv/bin/activate && dbt test
 
 dbt-run:
 	@echo "Running dbt models..."
-	source venv/bin/activate && dbt run
+	. venv/bin/activate && dbt run
 
 dbt-docs-generate:
 	@echo "Generating dbt documentation..."
@@ -85,4 +85,4 @@ evidence-preview:
 python-deps:
 	@echo "Installing Python dependencies..."
 	python3 -m venv venv
-	source venv/bin/activate && pip install -r requirements.txt
+	. venv/bin/activate && pip install -r requirements.txt
