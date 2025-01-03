@@ -51,4 +51,9 @@ jobs:
         run: npm run evidence:sources
       - name: Test Evidence
         run: npm run evidence:test
+      - name: Load data into MotherDuck
+        run: |
+          source venv/bin/activate && ./duckdb < scripts/motherduck_load.sql
+        
+        
   
