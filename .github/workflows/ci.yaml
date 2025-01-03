@@ -32,6 +32,7 @@ jobs:
       - name: Run make
         env:
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+        shell: bash  
         run: |
           python3 -m venv venv
           make ci
