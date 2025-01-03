@@ -3,6 +3,9 @@ version: 2
 models:
   - name: heatpump_compressor_usage
     description: ""
+    config:
+      contract:
+        enforced: true
     columns:
       - name: created_at
         data_type: bigint
