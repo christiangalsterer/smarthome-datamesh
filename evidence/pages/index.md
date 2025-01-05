@@ -1,5 +1,5 @@
 ---
-title: SmartHome DataMesh
+title: Energy Monitor
 ---
 
 ```sql years
@@ -52,7 +52,7 @@ title: SmartHome DataMesh
   order by month desc;
 ```
 
-```sql heat_quantities_current_month
+```sql heat_quantities_last_month
   select 
     day,
     heat_quantity_heating,
@@ -169,13 +169,13 @@ title: SmartHome DataMesh
     title="Heat Quantities last 13 months"
     x=month
     y={['heat_quantity_heating', 'heat_quantity_water']}
-    xFmt="yyyy-mm-dd"
+    xFmt="yyyy-mm"
     yFmt=num1
 />
 
 <LineChart
-    data={heat_quantities_current_month}
-    title="Heat Quantities current month"
+    data={heat_quantities_last_month}
+    title="Heat Quantities last month"
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
@@ -214,6 +214,7 @@ title: SmartHome DataMesh
     x=year
     y=heat_quantity_heating
     xFmt=yyyy
+    sort=false
 />
 
 <BarChart 
@@ -222,6 +223,7 @@ title: SmartHome DataMesh
     x=year
     y=heat_quantity_water
     xFmt=yyyy
+    sort=false
 />
 </Grid>
 
