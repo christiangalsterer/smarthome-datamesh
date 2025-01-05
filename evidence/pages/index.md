@@ -289,7 +289,7 @@ title: Energy Monitor
 
 <LineChart
     data={temperatures_day}
-    title="Temperatures for {inputs.day.label}"
+    title="Temperatures Heating for {inputs.day.label}"
     x=timestamp
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
@@ -298,7 +298,7 @@ title: Energy Monitor
 
 <LineChart
     data={temperatures_day}
-    title="Temperatures for {inputs.day.label}"
+    title="Temperatures Water for {inputs.day.label}"
     x=timestamp
     y={['temp_water', 'temp_water_soll']}
     xFmt="yyyy-mm-dd hh:mm:s"
