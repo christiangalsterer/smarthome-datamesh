@@ -110,7 +110,8 @@ title: Energy Monitor
     temp_vorlauf,
     temp_delta_t,
     temp_water,
-    temp_water_soll
+    temp_water_soll,
+    temp_outside
   from smarthome_dwh.temperatures
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
@@ -291,9 +292,10 @@ title: Energy Monitor
     data={temperatures_day}
     title="Temperatures Heating for {inputs.day.label}"
     x=timestamp
-    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
+    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t', 'temp_outside']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+    connectGroup=daily
 />
 
 <LineChart
@@ -303,6 +305,7 @@ title: Energy Monitor
     y={['temp_water', 'temp_water_soll']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+    connectGroup=daily
 />
 
 <LineChart
@@ -312,6 +315,7 @@ title: Energy Monitor
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num1
+    connectGroup=daily
 />
 
 <LineChart
@@ -321,5 +325,6 @@ title: Energy Monitor
     y={['compressor_heating', 'compressor_water']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num1
+    connectGroup=daily
 />
 
