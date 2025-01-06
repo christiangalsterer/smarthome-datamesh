@@ -314,7 +314,7 @@ title: Energy Monitor
     x=timestamp
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
-    yFmt=num1
+    yFmt=num2
     connectGroup=daily
 />
 
@@ -324,7 +324,7 @@ title: Energy Monitor
     x=timestamp
     y={['compressor_heating', 'compressor_water']}
     xFmt="yyyy-mm-dd hh:mm:s"
-    yFmt=num1
+    yFmt=num2
     connectGroup=daily
 />
 
