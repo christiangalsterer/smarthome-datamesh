@@ -1,0 +1,1 @@
+select * from analytics.outside_temperatures

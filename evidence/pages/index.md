@@ -5,21 +5,21 @@ title: Energy Monitor
 ```sql years
   select distinct
       strftime(created_date, '%Y') as year
-  from smarthome_dwh.temperatures
+  from smarthome_dwh.heatpump_temperatures
   order by year desc
 ```
 
 ```sql months
   select distinct
       strftime(created_date, '%Y-%m') as month
-  from smarthome_dwh.temperatures
+  from smarthome_dwh.heatpump_temperatures
   order by month desc
 ```
 
 ```sql days
   select distinct
       strftime(created_date, '%Y-%m-%d') as day
-  from smarthome_dwh.temperatures
+  from smarthome_dwh.heatpump_temperatures
   order by day desc
 ```
 
@@ -102,7 +102,7 @@ title: Energy Monitor
   order by timestamp desc
 ```
 
-```sql temperatures_day
+```sql heatpump_temperatures_day
   select 
     created_date as timestamp,
     temp_ruecklauf,
@@ -110,9 +110,8 @@ title: Energy Monitor
     temp_vorlauf,
     temp_delta_t,
     temp_water,
-    temp_water_soll,
-    temp_outside
-  from smarthome_dwh.temperatures
+    temp_water_soll
+  from smarthome_dwh.heatpump_temperatures
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
 ```
@@ -124,8 +123,17 @@ title: Energy Monitor
     temp_ruecklauf_soll,
     temp_vorlauf,
     temp_delta_t
-  from smarthome_dwh.temperatures
+  from smarthome_dwh.heatpump_temperatures
   where timestamp between current_date() - INTERVAL 7 DAY and current_date()
+  order by timestamp desc
+```
+
+```sql outside_temperatures_day
+  select 
+    created_date as timestamp,
+    temp_outside
+  from smarthome_dwh.outside_temperatures
+  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
 ```
 
@@ -289,17 +297,27 @@ title: Energy Monitor
 />
 
 <LineChart
-    data={temperatures_day}
+    data={heatpump_temperatures_day}
     title="Temperatures Heating for {inputs.day.label}"
     x=timestamp
-    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t', 'temp_outside']}
+    y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
     connectGroup=daily
 />
 
 <LineChart
-    data={temperatures_day}
+    data={outside_temperatures_day}
+    title="Temperatures Outside for {inputs.day.label}"
+    x=timestamp
+    y={['temp_outside']}
+    xFmt="yyyy-mm-dd hh:mm:s"
+    yFmt=num2
+    connectGroup=daily
+/>
+
+<LineChart
+    data={heatpump_temperatures_day}
     title="Temperatures Water for {inputs.day.label}"
     x=timestamp
     y={['temp_water', 'temp_water_soll']}
