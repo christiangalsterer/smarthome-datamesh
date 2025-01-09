@@ -79,6 +79,11 @@ evidence-preview:
 	@echo "Previewing Evidence..."
 	npm run preview --prefix evidence
 
+metabase-run:
+	@echo "Running Metabase..."
+	docker compose -f metabase/docker-compose.yml up
+	open http://localhost:4000
+
 python-deps:
 	@echo "Installing Python dependencies..."
 	python3 -m venv venv

@@ -19,7 +19,7 @@
             "packages.yml"
         ]
     },
-    "editor.acceptSuggestionOnEnter": "on",
+    "editor.acceptSuggestionOnEnter": true,
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
@@ -29,7 +29,8 @@
     "conventionalCommits.scopes": [
         "dbt",
         "evidence",
-        "npm"
+        "npm",
+        "metabase"
     ],
     "cSpell.words": [
         "novelan"
