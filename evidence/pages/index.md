@@ -173,13 +173,13 @@ title: Energy Monitor
 <BigValue 
   data={heat_quantities_current_year} 
   value=heat_quantity_heating
-  fmt=num2
+  fmt=num0
 />
 
 <BigValue 
   data={heat_quantities_current_year} 
   value=heat_quantity_water
-  fmt=num2
+  fmt=num0
 />
 
 <LineChart
@@ -188,7 +188,7 @@ title: Energy Monitor
     x=month
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm"
-    yFmt=num1
+    yFmt=num0
 />
 
 <LineChart
@@ -197,7 +197,7 @@ title: Energy Monitor
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
-    yFmt=num1
+    yFmt=num0
 />
 
 <LineChart
@@ -274,14 +274,14 @@ title: Energy Monitor
   data={heat_quantities_month} 
   value=heat_quantity_heating
   sparkline=month
-  fmt=num2
+  fmt=num0
 />
 
 <BigValue 
   data={heat_quantities_month} 
   value=heat_quantity_water
   sparkline=month
-  fmt=num2
+  fmt=num0
 />
 
 <LineChart
@@ -290,7 +290,7 @@ title: Energy Monitor
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
-    yFmt=num1
+    yFmt=num0
 />
 
 ## Daily
@@ -304,14 +304,14 @@ title: Energy Monitor
   data={heat_quantities_daily} 
   value=heat_quantity_heating
   sparkline=day
-  fmt=num2
+  fmt=num0
 />
 
 <BigValue 
   data={heat_quantities_daily} 
   value=heat_quantity_water
   sparkline=day
-  fmt=num2
+  fmt=num0
 />
 
 <LineChart
@@ -350,7 +350,7 @@ title: Energy Monitor
     x=timestamp
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
-    yFmt=num2
+    yFmt=num0
     connectGroup=daily
 />
 
