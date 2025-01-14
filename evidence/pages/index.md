@@ -28,7 +28,7 @@ title: Energy Monitor
     strftime(year, '%Y') as year,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities_yearly
+  from smarthome_dwh.heatpump_heat_quantities_yearly
   where strftime(year, '%Y') like date_part('year', current_date())
   order by year desc;
 ```
@@ -38,7 +38,7 @@ title: Energy Monitor
     strftime(year, '%Y') as year,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities_yearly
+  from smarthome_dwh.heatpump_heat_quantities_yearly
   order by year desc;
 ```
 
@@ -47,7 +47,16 @@ title: Energy Monitor
     month,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities_monthly
+  from smarthome_dwh.heatpump_heat_quantities_monthly
+  where month between current_date() - INTERVAL 13 MONTH and current_date()
+  order by month desc;
+```
+
+```sql meter_heat_quantities_last_13_month
+  select 
+    month,
+    heat_quantity
+  from smarthome_dwh.meter_heat_quantities_monthly
   where month between current_date() - INTERVAL 13 MONTH and current_date()
   order by month desc;
 ```
@@ -57,7 +66,7 @@ title: Energy Monitor
     day,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities_daily
+  from smarthome_dwh.heatpump_heat_quantities_daily
   where day between current_date() - INTERVAL 1 MONTH and current_date()
   order by day desc;
 ```
@@ -67,7 +76,7 @@ title: Energy Monitor
     month,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities_monthly
+  from smarthome_dwh.heatpump_heat_quantities_monthly
   where strftime(month, '%Y') like '${inputs.year.value}'
   order by month desc;
 ```
@@ -77,7 +86,7 @@ title: Energy Monitor
     month,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities_monthly
+  from smarthome_dwh.heatpump_heat_quantities_monthly
   where strftime(month, '%Y-%m') like '${inputs.month.value}'
   order by month desc;
 ```
@@ -87,7 +96,7 @@ title: Energy Monitor
     day,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities_daily
+  from smarthome_dwh.heatpump_heat_quantities_daily
   where strftime(day, '%Y-%m') like '${inputs.month.value}'
   order by day desc;
 ```
@@ -97,7 +106,7 @@ title: Energy Monitor
     created_date as timestamp,
     heat_quantity_heating,
     heat_quantity_water
-  from smarthome_dwh.heat_quantities
+  from smarthome_dwh.heatpump_heat_quantities
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
 ```
@@ -142,7 +151,7 @@ title: Energy Monitor
     created_date as timestamp,
     compressor_heating,
     compressor_water
-  from smarthome_dwh.compressor_usage
+  from smarthome_dwh.heatpump_compressor_usage
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
 ```
@@ -152,7 +161,7 @@ title: Energy Monitor
     created_date as timestamp,
     compressor_heating,
     compressor_water
-  from smarthome_dwh.compressor_usage
+  from smarthome_dwh.heatpump_compressor_usage
   where created_date between current_date() - INTERVAL 7 DAY and current_date()
   order by timestamp desc
 ```
@@ -188,6 +197,15 @@ title: Energy Monitor
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
+    yFmt=num1
+/>
+
+<LineChart
+    data={meter_heat_quantities_last_13_month}
+    title="Heat Quantities External Meter last 13 months"
+    x=month
+    y={['heat_quantity']}
+    xFmt="yyyy-mm"
     yFmt=num1
 />
 

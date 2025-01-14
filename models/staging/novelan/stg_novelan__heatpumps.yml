@@ -256,11 +256,11 @@ models:
         data_type: bigint
         description: ""
 
-      - name: wmz_hz
+      - name: heat_quantity_heating
         data_type: double
         description: ""
 
-      - name: wmz_bw
+      - name: heat_quantity_water
         data_type: double
         description: ""
 

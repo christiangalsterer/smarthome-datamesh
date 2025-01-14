@@ -27,6 +27,8 @@ clean-targets: # directories to be removed by `dbt clean`
 models:
   novelan:
     +materialized: table
+  engelmann:
+    +materialized: table  
     # staging:
     #   +materialized: incremental
   post-hook:

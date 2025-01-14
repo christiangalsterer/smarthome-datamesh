@@ -8,3 +8,11 @@ novelan:
       schema: analytics
       path: 'smarthome_dwh.duckdb'
       threads: 24
+engelmann:
+  target: smarthome_dwh
+  outputs:
+    smarthome_dwh:
+      type: duckdb
+      schema: analytics
+      path: 'smarthome_dwh.duckdb'
+      threads: 24      

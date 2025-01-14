@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_engelmann__sensostar_v1
+    description: ""
+    columns:
+      - name: created_date
+        data_type: timestamp
+        description: ""
+
+      - name: meter_id
+        data_type: varchar
+        description: ""
+
+      - name: heat_quantity
+        data_type: double
+        description: ""
+
+      - name: heat_quantity_type
+        data_type: varchar
+        description: ""
+
+      - name: cost_center
+        data_type: varchar
+        description: ""

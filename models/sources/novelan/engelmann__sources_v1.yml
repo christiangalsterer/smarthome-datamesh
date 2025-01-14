@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: engelmann
+    schema: raw
+    tables:
+      - name: engelmann_sensostar_v1
+        columns:
+          - name: created_date
+            data_type: timestamp
+          - name: meter_id
+            data_type: varchar
+          - name: heat_quantity
+            data_type: double
+          - name: heat_quantity_type
+            data_type: varchar
+          - name: cost_center
+            data_type: varchar

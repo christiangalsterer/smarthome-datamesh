@@ -11,8 +11,8 @@ heat_quantities as (
     select
         created_at,
         created_date,
-        wmz_bw as heat_quantity_water,
-        wmz_hz as heat_quantity_heating
+        heat_quantity_water,
+        heat_quantity_heating
     from source
     order by created_at desc
 )

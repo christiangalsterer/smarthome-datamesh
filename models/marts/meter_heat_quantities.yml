@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: meter_heat_quantities
+    description: ""
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: created_date
+        data_type: timestamp
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: heat_quantity
+        data_type: double
+        description: ""
