@@ -14,5 +14,5 @@ models:
           - not_null
 
       - name: heat_quantity
-        data_type: double
+        data_type: bigint
         description: ""

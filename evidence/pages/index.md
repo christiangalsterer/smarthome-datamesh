@@ -206,7 +206,7 @@ title: Energy Monitor
     x=month
     y={['heat_quantity']}
     xFmt="yyyy-mm"
-    yFmt=num1
+    yFmt=num0
 />
 
 <LineChart
