@@ -1,11 +1,11 @@
 SHELL = /bin/bash
 
-.PHONY: build ci clean duckdb-clean duckdb-load motherduck-load dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
+.PHONY: build ci clean duckdb-clean duckdb-ingest motherduck-ingest dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
 
-build: duckdb-clean duckdb-load dbt-build dbt-docs-generate evidence-sources evidence-dev
+build: duckdb-clean duckdb-ingest dbt-build dbt-docs-generate evidence-sources evidence-dev
 	@echo "Building...""
 
-ci: clean python-deps duckdb-load dbt-deps dbt-build dbt-docs-generate motherduck-load evidence-install evidence-sources evidence-test
+ci: clean python-deps duckdb-ingest dbt-deps dbt-build dbt-docs-generate motherduck-ingest evidence-install evidence-sources evidence-test
 	@echo "Running CI..."
 
 clean: duckdb-clean
@@ -16,13 +16,13 @@ duckdb-clean:
 	@echo "Removing DuckDB database..."
 	rm -rf smarthome_dwh.duckdb
 
-duckdb-load:
+duckdb-ingest:
 	@echo "Loading data into DuckDB database..."
-	source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_load.sql
+	source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_ingest.sql
 
-motherduck-load:
+motherduck-ingest:
 	@echo "Loading data into MotherDuck database..."
-	source venv/bin/activate && duckdb < scripts/motherduck_load.sql
+	source venv/bin/activate && duckdb < scripts/motherduck_ingest.sql
 
 dbt-build:
 	@echo "Building dbt models..."
