@@ -3,7 +3,11 @@
 .user.yml
 venv
 .env
-*.duckdb
+
+#duckdb
+*.duckdb*
+*.wal
+*.tmp/
 
 #dbt
 target/
