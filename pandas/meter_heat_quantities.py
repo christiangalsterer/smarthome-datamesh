@@ -20,7 +20,7 @@ def plot(df):
     plt.show()
 
 def main():
-    file_path = 'data/engelmann/sensostar/v1/heat_quantity_meter_2024.csv'
+    file_path = 'data/engelmann/sensostar/v1/heat_quantity_meter_2*.csv'
     meter_heat_quantities_df = read_meter_heat_quantities(file_path)
     print(meter_heat_quantities_df)
     plot(meter_heat_quantities_df)
