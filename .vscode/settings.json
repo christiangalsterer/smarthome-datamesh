@@ -30,7 +30,8 @@
         "dbt",
         "evidence",
         "npm",
-        "metabase"
+        "metabase",
+        "pandas"
     ],
     "cSpell.words": [
         "novelan"
