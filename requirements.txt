@@ -64,7 +64,7 @@ fonttools==4.55.3
     # via matplotlib
 idna==3.10
     # via requests
-importlib-metadata==6.11.0
+importlib-metadata==8.6.1
     # via dbt-semantic-interfaces
 isodate==0.6.1
     # via
