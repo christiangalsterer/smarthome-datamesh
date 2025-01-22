@@ -316,7 +316,7 @@ title: Energy Monitor
 
 <LineChart
     data={heatpump_temperatures_day}
-    title="Temperatures Heating for {inputs.day.label}"
+    title="Temperatures Heatpump for {inputs.day.label}"
     x=timestamp
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
