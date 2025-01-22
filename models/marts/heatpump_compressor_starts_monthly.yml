@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: heatpump_compressor_starts_monthly
+    description: ""
+    columns:
+      - name: month
+        data_type: date
+        description: ""
+        data_tests:
+          - unique
+          - not_null
+
+      - name: compressor_heating_starts
+        data_type: integer
+        description: ""
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: compressor_water_starts
+        data_type: integer
+        description: ""
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0

@@ -146,25 +146,76 @@ title: Energy Monitor
   order by timestamp desc
 ```
 
-```sql compressor_usage_day
+```sql compressor_starts_day
   select 
     created_date as timestamp,
     compressor_heating,
     compressor_water
-  from smarthome_dwh.heatpump_compressor_usage
+  from smarthome_dwh.heatpump_compressor_starts
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
 ```
 
-```sql compressor_usage_last_7_days
+```sql compressor_starts_daily
   select 
-    created_date as timestamp,
-    compressor_heating,
-    compressor_water
-  from smarthome_dwh.heatpump_compressor_usage
-  where created_date between current_date() - INTERVAL 7 DAY and current_date()
+    day,
+    compressor_heating_starts,
+    compressor_water_starts
+  from smarthome_dwh.heatpump_compressor_starts_daily
+  where strftime(day, '%Y-%m') like '${inputs.month.value}'
+  order by day desc;
+```
+
+```sql compressor_starts_last_month
+  select 
+    day as timestamp,
+    compressor_heating_starts,
+    compressor_water_starts
+  from smarthome_dwh.heatpump_compressor_starts_daily
+  where day between current_date() - INTERVAL 1 MONTH and current_date()
   order by timestamp desc
 ```
+
+```sql compressor_starts_month
+  select 
+    month,
+    compressor_heating_starts,
+    compressor_water_starts
+  from smarthome_dwh.heatpump_compressor_starts_monthly
+  where strftime(month, '%Y-%m') like '${inputs.month.value}'
+  order by month desc;
+```
+
+```sql compressor_starts_last_13_months
+  select 
+    month,
+    compressor_heating_starts,
+    compressor_water_starts
+  from smarthome_dwh.heatpump_compressor_starts_monthly
+  where month between (date_trunc('month', current_date()) - INTERVAL 13 MONTH) and current_date()
+  order by month desc;
+```
+
+```sql compressor_starts_yearly
+  select 
+    strftime(year, '%Y') as year,
+    compressor_heating_starts,
+    compressor_water_starts
+  from smarthome_dwh.heatpump_compressor_starts_yearly
+  order by year desc;
+```
+
+```sql compressor_starts_current_year
+  select 
+    strftime(year, '%Y') as year,
+    compressor_heating_starts,
+    compressor_water_starts
+  from smarthome_dwh.heatpump_compressor_starts_yearly
+  where strftime(year, '%Y') like date_part('year', current_date())
+  order by year desc;
+```
+
+
 
 <LastRefreshed/>
 
@@ -181,6 +232,20 @@ title: Energy Monitor
   data={heat_quantities_current_year} 
   value=heat_quantity_water
   title="Heat Quantity Water YTD"
+  fmt=num0
+/>
+
+<BigValue 
+  data={compressor_starts_current_year} 
+  value=compressor_heating_starts
+  title="Compressor Starts Heating YTD"
+  fmt=num0
+/>
+
+<BigValue 
+  data={compressor_starts_current_year} 
+  value=compressor_water_starts
+  title="Compressor Starts Water YTD"
   fmt=num0
 />
 
@@ -221,11 +286,20 @@ title: Energy Monitor
 />
 
 <LineChart
-    data={compressor_usage_last_7_days}
-    title="Compressor usage for last 7 days"
+    data={compressor_starts_last_13_months}
+    title="Compressor Starts last 13 months"
+    x=month
+    y={['compressor_heating_starts', 'compressor_water_starts']}
+    xFmt="yyyy-mm"
+    yFmt=num0
+/>
+
+<LineChart
+    data={compressor_starts_last_month}
+    title="Compressor Starts last month"
     x=timestamp
-    y={['compressor_heating', 'compressor_water']}
-    xFmt="yyyy-mm-dd hh:mm:s"
+    y={['compressor_heating_starts', 'compressor_water_starts']}
+    xFmt="yyyy-mm-dd"
     yFmt=num1
 />
 
@@ -251,6 +325,26 @@ title: Energy Monitor
     title="Heat Quantity Water Per Year"
     x=year
     y=heat_quantity_water
+    xFmt=yyyy
+    sort=false
+/>
+</Grid>
+
+<Grid cols=2>
+<BarChart 
+    data={compressor_starts_yearly}
+    title="Compressor Heating Starts Per Year"
+    x=year
+    y=compressor_heating_starts
+    xFmt=yyyy
+    sort=false
+/>
+
+<BarChart 
+    data={compressor_starts_yearly}
+    title="Compressor Water Starts Per Year"
+    x=year
+    y=compressor_water_starts
     xFmt=yyyy
     sort=false
 />
@@ -286,11 +380,34 @@ title: Energy Monitor
   fmt=num0
 />
 
+<BigValue 
+  data={compressor_starts_month} 
+  value=compressor_heating_starts
+  sparkline=month
+  fmt=num0
+/>
+
+<BigValue 
+  data={compressor_starts_month} 
+  value=compressor_water_starts
+  sparkline=month
+  fmt=num0
+/>
+
 <LineChart
     data={heat_quantities_daily}
     title="Heat Quantity {inputs.month.label}"
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
+    xFmt="yyyy-mm-dd"
+    yFmt=num0
+/>
+
+<LineChart
+    data={compressor_starts_daily}
+    title="Compressor Starts {inputs.month.label}"
+    x=day
+    y={['compressor_heating_starts', 'compressor_water_starts']}
     xFmt="yyyy-mm-dd"
     yFmt=num0
 />
@@ -357,8 +474,8 @@ title: Energy Monitor
 />
 
 <LineChart
-    data={compressor_usage_day}
-    title="Compressor usage {inputs.day.label}"
+    data={compressor_starts_day}
+    title="Compressor Starts {inputs.day.label}"
     x=timestamp
     y={['compressor_heating', 'compressor_water']}
     xFmt="yyyy-mm-dd hh:mm:s"

@@ -1,1 +1,0 @@
-select * from analytics.heatpump_compressor_usage

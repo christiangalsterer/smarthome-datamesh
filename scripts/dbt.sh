@@ -16,7 +16,10 @@ dbt run-operation generate_model_yaml --args '{"model_names": ["stg_novelan__hea
 dbt run-operation generate_model_yaml --args '{"model_names": ["stg_engelmann__sensostar_v1"]}'
 
 
-dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_compressor_usage"]}'
+dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_compressor_starts"]}'
+dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_compressor_starts_daily"]}'
+dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_compressor_starts_monthly"]}'
+dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_compressor_starts_yearly"]}'
 dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_heat_quantities_daily"]}'
 dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_heat_quantities_monthly"]}'
 dbt run-operation generate_model_yaml --args '{"model_names": ["heatpump_heat_quantities_yearly"]}'
