@@ -48,7 +48,7 @@ title: Energy Monitor
     heat_quantity_heating,
     heat_quantity_water
   from smarthome_dwh.heatpump_heat_quantities_monthly
-  where month between current_date() - INTERVAL 13 MONTH and current_date()
+  where month between (date_trunc('month', current_date()) - INTERVAL 13 MONTH) and current_date()
   order by month desc;
 ```
 
@@ -57,7 +57,7 @@ title: Energy Monitor
     month,
     heat_quantity
   from smarthome_dwh.meter_heat_quantities_monthly
-  where month between current_date() - INTERVAL 13 MONTH and current_date()
+  where month between (date_trunc('month', current_date()) - INTERVAL 13 MONTH) and current_date()
   order by month desc;
 ```
 
@@ -173,18 +173,20 @@ title: Energy Monitor
 <BigValue 
   data={heat_quantities_current_year} 
   value=heat_quantity_heating
+  title="Heat Quantity Heating YTD"
   fmt=num0
 />
 
 <BigValue 
   data={heat_quantities_current_year} 
   value=heat_quantity_water
+  title="Heat Quantity Water YTD"
   fmt=num0
 />
 
 <LineChart
     data={heat_quantities_last_13_month}
-    title="Heat Quantities last 13 months"
+    title="Heat Quantity last 13 months"
     x=month
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm"
@@ -193,7 +195,7 @@ title: Energy Monitor
 
 <LineChart
     data={heat_quantities_last_month}
-    title="Heat Quantities last month"
+    title="Heat Quantity last month"
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
@@ -202,7 +204,7 @@ title: Energy Monitor
 
 <LineChart
     data={meter_heat_quantities_last_13_month}
-    title="Heat Quantities External Meter last 13 months"
+    title="Heat Quantity External Meter last 13 months"
     x=month
     y={['heat_quantity']}
     xFmt="yyyy-mm"
@@ -211,7 +213,7 @@ title: Energy Monitor
 
 <LineChart
     data={temperatures_last_7_days}
-    title="Temperatures last 7 days"
+    title="Temperature last 7 days"
     x=timestamp
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
@@ -220,7 +222,7 @@ title: Energy Monitor
 
 <LineChart
     data={compressor_usage_last_7_days}
-    title="Compressors usage for last 7 days"
+    title="Compressor usage for last 7 days"
     x=timestamp
     y={['compressor_heating', 'compressor_water']}
     xFmt="yyyy-mm-dd hh:mm:s"
@@ -237,7 +239,7 @@ title: Energy Monitor
 <Grid cols=2>
 <BarChart 
     data={heat_quantities_yearly}
-    title="Heat Quantities Heating Per Year"
+    title="Heat Quantity Heating Per Year"
     x=year
     y=heat_quantity_heating
     xFmt=yyyy
@@ -246,7 +248,7 @@ title: Energy Monitor
 
 <BarChart 
     data={heat_quantities_yearly}
-    title="Heat Quantities Water Per Year"
+    title="Heat Quantity Water Per Year"
     x=year
     y=heat_quantity_water
     xFmt=yyyy
@@ -256,7 +258,7 @@ title: Energy Monitor
 
 <LineChart
     data={heat_quantities_monthly}
-    title="Heat Quantities {inputs.year.label}"
+    title="Heat Quantity {inputs.year.label}"
     x=month
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
@@ -286,7 +288,7 @@ title: Energy Monitor
 
 <LineChart
     data={heat_quantities_daily}
-    title="Heat Quantities {inputs.month.label}"
+    title="Heat Quantity {inputs.month.label}"
     x=day
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
@@ -316,7 +318,7 @@ title: Energy Monitor
 
 <LineChart
     data={heatpump_temperatures_day}
-    title="Temperatures Heatpump {inputs.day.label}"
+    title="Temperature Heatpump {inputs.day.label}"
     x=timestamp
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
@@ -326,7 +328,7 @@ title: Energy Monitor
 
 <LineChart
     data={outside_temperatures_day}
-    title="Temperatures Outside {inputs.day.label}"
+    title="Temperature Outside {inputs.day.label}"
     x=timestamp
     y={['temp_outside']}
     xFmt="yyyy-mm-dd hh:mm:s"
@@ -336,7 +338,7 @@ title: Energy Monitor
 
 <LineChart
     data={heatpump_temperatures_day}
-    title="Temperatures Water {inputs.day.label}"
+    title="Temperature Water {inputs.day.label}"
     x=timestamp
     y={['temp_water', 'temp_water_soll']}
     xFmt="yyyy-mm-dd hh:mm:s"
@@ -346,7 +348,7 @@ title: Energy Monitor
 
 <LineChart
     data={heat_quantities_day}
-    title="Heat Quantities {inputs.day.label}"
+    title="Heat Quantity {inputs.day.label}"
     x=timestamp
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
@@ -356,7 +358,7 @@ title: Energy Monitor
 
 <LineChart
     data={compressor_usage_day}
-    title="Compressors usage {inputs.day.label}"
+    title="Compressor usage {inputs.day.label}"
     x=timestamp
     y={['compressor_heating', 'compressor_water']}
     xFmt="yyyy-mm-dd hh:mm:s"
