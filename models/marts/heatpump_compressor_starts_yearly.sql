@@ -10,8 +10,8 @@ yearly_values as
     (
     select 
         date_trunc('year', month) as year,
-        sum(compressor_heating_starts)::int as compressor_heating_starts,
-        sum(compressor_water_starts)::int as compressor_water_starts
+        sum(compressor_starts_heating)::int as compressor_starts_heating,
+        sum(compressor_starts_water)::int as compressor_starts_water
     from source
     group by date_trunc('year', month)
     order by year desc

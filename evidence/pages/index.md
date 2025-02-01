@@ -159,8 +159,8 @@ title: Energy Monitor
 ```sql compressor_starts_daily
   select 
     day,
-    compressor_heating_starts,
-    compressor_water_starts
+    compressor_starts_heating,
+    compressor_starts_water
   from smarthome_dwh.heatpump_compressor_starts_daily
   where strftime(day, '%Y-%m') like '${inputs.month.value}'
   order by day desc;
@@ -169,8 +169,8 @@ title: Energy Monitor
 ```sql compressor_starts_last_month
   select 
     day as timestamp,
-    compressor_heating_starts,
-    compressor_water_starts
+    compressor_starts_heating,
+    compressor_starts_water
   from smarthome_dwh.heatpump_compressor_starts_daily
   where day between current_date() - INTERVAL 1 MONTH and current_date()
   order by timestamp desc
@@ -179,8 +179,8 @@ title: Energy Monitor
 ```sql compressor_starts_month
   select 
     month,
-    compressor_heating_starts,
-    compressor_water_starts
+    compressor_starts_heating,
+    compressor_starts_water
   from smarthome_dwh.heatpump_compressor_starts_monthly
   where strftime(month, '%Y-%m') like '${inputs.month.value}'
   order by month desc;
@@ -189,8 +189,8 @@ title: Energy Monitor
 ```sql compressor_starts_last_13_months
   select 
     month,
-    compressor_heating_starts,
-    compressor_water_starts
+    compressor_starts_heating,
+    compressor_starts_water
   from smarthome_dwh.heatpump_compressor_starts_monthly
   where month between (date_trunc('month', current_date()) - INTERVAL 13 MONTH) and current_date()
   order by month desc;
@@ -199,8 +199,8 @@ title: Energy Monitor
 ```sql compressor_starts_yearly
   select 
     strftime(year, '%Y') as year,
-    compressor_heating_starts,
-    compressor_water_starts
+    compressor_starts_heating,
+    compressor_starts_water
   from smarthome_dwh.heatpump_compressor_starts_yearly
   order by year desc;
 ```
@@ -208,8 +208,8 @@ title: Energy Monitor
 ```sql compressor_starts_current_year
   select 
     strftime(year, '%Y') as year,
-    compressor_heating_starts,
-    compressor_water_starts
+    compressor_starts_heating,
+    compressor_starts_water
   from smarthome_dwh.heatpump_compressor_starts_yearly
   where strftime(year, '%Y') like date_part('year', current_date())
   order by year desc;
@@ -237,14 +237,14 @@ title: Energy Monitor
 
 <BigValue 
   data={compressor_starts_current_year} 
-  value=compressor_heating_starts
+  value=compressor_starts_heating
   title="Compressor Starts Heating YTD"
   fmt=num0
 />
 
 <BigValue 
   data={compressor_starts_current_year} 
-  value=compressor_water_starts
+  value=compressor_starts_water
   title="Compressor Starts Water YTD"
   fmt=num0
 />
@@ -292,7 +292,7 @@ title: Energy Monitor
     data={compressor_starts_last_13_months}
     title="Compressor Starts last 13 months"
     x=month
-    y={['compressor_heating_starts', 'compressor_water_starts']}
+    y={['compressor_starts_heating', 'compressor_starts_water']}
     xFmt="yyyy-mm"
     yFmt=num0
     connectGroup=monthly
@@ -302,7 +302,7 @@ title: Energy Monitor
     data={compressor_starts_last_month}
     title="Compressor Starts last month"
     x=timestamp
-    y={['compressor_heating_starts', 'compressor_water_starts']}
+    y={['compressor_starts_heating', 'compressor_starts_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num1
     connectGroup=daily
@@ -340,7 +340,7 @@ title: Energy Monitor
     data={compressor_starts_yearly}
     title="Compressor Heating Starts Per Year"
     x=year
-    y=compressor_heating_starts
+    y=compressor_starts_heating
     xFmt=yyyy
     sort=false
 />
@@ -349,7 +349,7 @@ title: Energy Monitor
     data={compressor_starts_yearly}
     title="Compressor Water Starts Per Year"
     x=year
-    y=compressor_water_starts
+    y=compressor_starts_water
     xFmt=yyyy
     sort=false
 />
@@ -388,14 +388,14 @@ title: Energy Monitor
 
 <BigValue 
   data={compressor_starts_month} 
-  value=compressor_heating_starts
+  value=compressor_starts_heating
   sparkline=month
   fmt=num0
 />
 
 <BigValue 
   data={compressor_starts_month} 
-  value=compressor_water_starts
+  value=compressor_starts_water
   sparkline=month
   fmt=num0
 />
@@ -414,7 +414,7 @@ title: Energy Monitor
     data={compressor_starts_daily}
     title="Compressor Starts {inputs.month.label}"
     x=day
-    y={['compressor_heating_starts', 'compressor_water_starts']}
+    y={['compressor_starts_heating', 'compressor_starts_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num0
     connectGroup=daily

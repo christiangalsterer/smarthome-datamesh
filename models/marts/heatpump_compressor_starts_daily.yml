@@ -11,7 +11,7 @@ models:
           - unique
           - not_null
 
-      - name: compressor_heating_starts
+      - name: compressor_starts_heating
         data_type: integer
         description: ""
         data_tests:
@@ -21,7 +21,7 @@ models:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
 
-      - name: compressor_water_starts
+      - name: compressor_starts_water
         data_type: integer
         description: ""
         data_tests:
