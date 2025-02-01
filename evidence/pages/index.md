@@ -310,7 +310,7 @@ title: Energy Monitor
 
 ## Yearly
 
-<Dropdown data={years} name=year value=year>
+<Dropdown data={years} name=year value=year order="year desc">
 </Dropdown>
 
 <LineBreak/>
@@ -367,7 +367,7 @@ title: Energy Monitor
 
 ## Monthly
 
-<Dropdown data={months} name=month value=month>
+<Dropdown data={months} name=month value=month order="month desc">
 </Dropdown>
 
 <LineBreak/>
@@ -422,7 +422,7 @@ title: Energy Monitor
 
 ## Daily
 
-<Dropdown data={days} name=day value=day>
+<Dropdown data={days} name=day value=day order="day desc">
 </Dropdown>
 
 <LineBreak/>
