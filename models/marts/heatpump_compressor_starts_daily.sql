@@ -10,9 +10,9 @@ compressor_starts AS (
     SELECT 
         created_at, 
         created_date, 
-        compressor_heating,
-        CASE WHEN compressor_heating = 1 AND lag(compressor_heating) OVER (ORDER BY created_at) = 0 THEN 1 ELSE 0 END AS compressor_starts_heating,
-        CASE WHEN compressor_water = 1 AND lag(compressor_water) OVER (ORDER BY created_at) = 0 THEN 1 ELSE 0 END AS compressor_starts_water
+        compressor_start_heating,
+        CASE WHEN compressor_start_heating = 1 AND lag(compressor_start_heating) OVER (ORDER BY created_at) = 0 THEN 1 ELSE 0 END AS compressor_starts_heating,
+        CASE WHEN compressor_start_water = 1 AND lag(compressor_start_water) OVER (ORDER BY created_at) = 0 THEN 1 ELSE 0 END AS compressor_starts_water
     FROM source
 )
 SELECT 

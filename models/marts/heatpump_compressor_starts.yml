@@ -20,13 +20,13 @@ models:
         data_tests:
           - not_null
 
-      - name: compressor_heating
+      - name: compressor_start_heating
         data_type: bigint
         description: ""
         data_tests:
           - not_null
 
-      - name: compressor_water
+      - name: compressor_start_water
         data_type: bigint
         description: ""
         data_tests:

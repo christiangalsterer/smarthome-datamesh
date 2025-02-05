@@ -146,14 +146,24 @@ title: Energy Monitor
   order by timestamp desc
 ```
 
-```sql compressor_starts_day
+```sql compressor_starts
   select 
     created_date as timestamp,
-    compressor_heating,
-    compressor_water
+    compressor_start_heating,
+    compressor_start_water
   from smarthome_dwh.heatpump_compressor_starts
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
+```
+
+```sql compressor_starts_day
+  select 
+    day,
+    compressor_starts_heating,
+    compressor_starts_water
+  from smarthome_dwh.heatpump_compressor_starts_daily
+  where strftime(day, '%Y-%m-%d') like '${inputs.day.value}'
+  order by day desc
 ```
 
 ```sql compressor_starts_daily
@@ -435,9 +445,23 @@ title: Energy Monitor
 />
 
 <BigValue 
-  data={heat_quantities_daily} 
+  data={heat_quantities_daily}
   value=heat_quantity_water
   sparkline=day
+  fmt=num0
+/>
+
+<BigValue 
+  data={compressor_starts_day} 
+  value=compressor_starts_heating
+  title="Compressor Starts Heating"
+  fmt=num0
+/>
+
+<BigValue 
+  data={compressor_starts_day} 
+  value=compressor_starts_water
+  title="Compressor Starts Water"
   fmt=num0
 />
 
@@ -482,10 +506,10 @@ title: Energy Monitor
 />
 
 <LineChart
-    data={compressor_starts_day}
+    data={compressor_starts}
     title="Compressor Starts {inputs.day.label}"
     x=timestamp
-    y={['compressor_heating', 'compressor_water']}
+    y={['compressor_start_heating', 'compressor_start_water']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
     connectGroup=daily
