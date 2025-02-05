@@ -103,6 +103,16 @@ title: Energy Monitor
 
 ```sql heat_quantities_day
   select 
+    day,
+    heat_quantity_heating,
+    heat_quantity_water
+  from smarthome_dwh.heatpump_heat_quantities_daily
+  where strftime(day, '%Y-%m-%d') like '${inputs.day.value}'
+  order by day desc;
+```
+
+```sql heat_quantities
+  select 
     created_date as timestamp,
     heat_quantity_heating,
     heat_quantity_water
@@ -438,14 +448,14 @@ title: Energy Monitor
 <LineBreak/>
 
 <BigValue 
-  data={heat_quantities_daily} 
+  data={heat_quantities_day} 
   value=heat_quantity_heating
   sparkline=day
   fmt=num0
 />
 
 <BigValue 
-  data={heat_quantities_daily}
+  data={heat_quantities_day}
   value=heat_quantity_water
   sparkline=day
   fmt=num0
@@ -496,7 +506,7 @@ title: Energy Monitor
 />
 
 <LineChart
-    data={heat_quantities_day}
+    data={heat_quantities}
     title="Heat Quantity {inputs.day.label}"
     x=timestamp
     y={['heat_quantity_heating', 'heat_quantity_water']}
