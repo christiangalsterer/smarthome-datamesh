@@ -2,7 +2,7 @@ import glob
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def read_meter_heat_quantities(file_path):
+def read_meter_heat_quantities(file_path) -> pd.DataFrame:
     # Read the CSV file into a DataFrame
     files = glob.glob(file_path)
     df = pd.concat([pd.read_csv(f, parse_dates=True, date_format={'created_date': '%Y-%m-%d %H:%M:%S'}, sep=';', index_col='created_date') for f in files])
