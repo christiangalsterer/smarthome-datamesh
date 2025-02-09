@@ -26,8 +26,9 @@ def main():
     if not compressor_starts == None:
       compressor_starts_df = compressor_starts_df._append({'datetime': datetime, 'compressor_starts': compressor_starts}, ignore_index=True)
 
-  compressor_starts_df.sort_values(by='datetime', inplace=True)
-  compressor_starts_df.to_csv('data/novelan/heatpump/v2/novelan_heatpump_compressor_starts.csv', index=False, sep=';')
+  if compressor_starts_df.size > 0:
+    compressor_starts_df.sort_values(by='datetime', inplace=True)
+    compressor_starts_df.to_csv('data/novelan/heatpump/v2/novelan_heatpump_compressor_starts.csv', index=False, sep=';')
 
 if __name__ == "__main__":
   main()
