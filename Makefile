@@ -1,11 +1,11 @@
 SHELL = /bin/bash
 
-.PHONY: build ci clean duckdb-clean duckdb-ingest motherduck-ingest dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
+.PHONY: build ci clean duckdb-clean pandas-load-data duckdb-ingest motherduck-ingest dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
 
-build: duckdb-clean duckdb-ingest dbt-build dbt-docs-generate evidence-sources evidence-dev
+build: pandas-load-data duckdb-clean duckdb-ingest dbt-build dbt-docs-generate evidence-sources evidence-dev
 	@echo "Building...""
 
-ci: clean python-deps duckdb-ingest dbt-deps dbt-build dbt-docs-generate motherduck-ingest evidence-install evidence-sources evidence-test
+ci: clean python-deps pandas-load-data duckdb-ingest dbt-deps dbt-build dbt-docs-generate motherduck-ingest evidence-install evidence-sources evidence-test
 	@echo "Running CI..."
 
 clean: duckdb-clean
@@ -23,6 +23,10 @@ duckdb-ingest:
 motherduck-ingest:
 	@echo "Loading data into MotherDuck database..."
 	source venv/bin/activate && duckdb < scripts/motherduck_ingest.sql
+
+pandas-load-data:
+	@echo "Loading data with pandas..."
+	python pandas/novelan_compressor_starts.py	
 
 dbt-build:
 	@echo "Building dbt models..."
