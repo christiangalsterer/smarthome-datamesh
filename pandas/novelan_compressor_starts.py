@@ -12,9 +12,12 @@ def main():
     filename = file.split(os.sep)[-1]
     date = filename.split('_')[0]
     time = filename.split('_')[1]
+    year = date[:2]
+    month = date[2:4]
+    day = date[-2:]
     hour = time[:2]
     minute = time[-2:]
-    datetime = f"20{date} {hour}:{minute}:59"
+    datetime = f"20{year}-{month}-{day} {hour}:{minute}:59"
 
     rows = df[df['0'].str.contains('Impulse Verdichter 1')]
     compressor_starts = rows['1']
