@@ -5,7 +5,7 @@ import pandas as pd
 def main():
   file_path = '/Users/cg/Documents/Immobilie/Novelan/210124-0F0/*_Text.csv'
   files = glob.glob(file_path)
-  compressor_starts_df = pd.DataFrame(columns=['datetime', 'compressor_starts'])
+  compressor_starts_df = pd.DataFrame(columns=['created_date', 'compressor_starts'])
 
   for file in files:
     df = pd.read_csv(file, sep=';', skiprows=1, names=['0', '1', '2', '3'])
@@ -27,7 +27,7 @@ def main():
       compressor_starts_df = compressor_starts_df._append({'created_date': created_date, 'compressor_starts': compressor_starts}, ignore_index=True)
 
   if compressor_starts_df.size > 0:
-    compressor_starts_df.sort_values(by='datetime', inplace=True)
+    compressor_starts_df.sort_values(by='created_date', inplace=True)
     compressor_starts_df.to_csv('data/novelan/heatpump/v1/novelan_heatpump_compressor_starts.csv', index=False, sep=';')
 
 if __name__ == "__main__":
