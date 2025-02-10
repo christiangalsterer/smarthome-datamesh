@@ -23,7 +23,7 @@ def main():
     compressor_starts = rows['1']
 
     compressor_starts = compressor_starts.iloc[0] if not compressor_starts.empty else None
-    if not compressor_starts == None:
+    if compressor_starts != None:
       compressor_starts_df = compressor_starts_df._append({'datetime': datetime, 'compressor_starts': compressor_starts}, ignore_index=True)
 
   if compressor_starts_df.size > 0:

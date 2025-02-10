@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 
-.PHONY: build ci clean duckdb-clean pandas-load-data duckdb-ingest motherduck-ingest dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps
+.PHONY: build ci clean duckdb-clean duckdb-ingest motherduck-ingest dbt-build dbt-deps dbt-test dbt-run dbt-docs-generate dbt-docs-serve dbt-docs-build evidence-build evidence-build-strict evidence-dev evidence-install evidence-test evidence-sources evidence-preview python-deps pandas-load-data
 
 build: pandas-load-data duckdb-clean duckdb-ingest dbt-build dbt-docs-generate evidence-sources evidence-dev
 	@echo "Building...""
@@ -26,7 +26,7 @@ motherduck-ingest:
 
 pandas-load-data:
 	@echo "Loading data with pandas..."
-	python pandas/novelan_compressor_starts.py	
+	source venv/bin/activate && python pandas/novelan_compressor_starts.py	
 
 dbt-build:
 	@echo "Building dbt models..."
