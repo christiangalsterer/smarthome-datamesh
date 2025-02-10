@@ -36,4 +36,5 @@
     "cSpell.words": [
         "novelan"
     ],
+    "dbt.enableNewLineagePanel": true,
 }
