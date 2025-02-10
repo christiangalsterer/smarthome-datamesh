@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: novelan
+    schema: raw
+    tables:
+      - name: novelan_heatpump_compressor_starts_v1
+        columns:
+          - name: datetime
+            data_type: timestamp
+          - name: compressor_starts
+            data_type: bigint

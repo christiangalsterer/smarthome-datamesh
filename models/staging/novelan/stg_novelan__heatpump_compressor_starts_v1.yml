@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_novelan__heatpump_compressor_starts_v1
+    description: ""
+    columns:
+      - name: created_date
+        data_type: timestamp
+        description: ""
+
+      - name: compressor_starts
+        data_type: bigint
+        description: ""
