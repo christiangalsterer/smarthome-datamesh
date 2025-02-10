@@ -6,7 +6,9 @@ sources:
     tables:
       - name: novelan_heatpump_compressor_starts_v1
         columns:
-          - name: datetime
+          - name: created_date
             data_type: timestamp
+          - name: created_at
+            data_type: bigint
           - name: compressor_starts
             data_type: bigint

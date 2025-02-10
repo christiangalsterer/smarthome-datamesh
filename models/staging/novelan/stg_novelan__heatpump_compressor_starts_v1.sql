@@ -5,7 +5,7 @@ with
 
     ),
 
-    renamed as (select created_date, compressor_starts from source)
+    renamed as (select created_date, created_at, compressor_starts from source)
 
 select *
 from renamed
