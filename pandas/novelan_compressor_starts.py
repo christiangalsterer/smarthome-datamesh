@@ -18,6 +18,7 @@ def main():
     hour = time[:2]
     minute = time[-2:]
     created_date = f"20{year}-{month}-{day} {hour}:{minute}:59"
+    created_date = pd.to_datetime(created_date).tz_localize('Europe/Berlin').tz_convert('UTC')
 
     rows = df[df['0'].str.contains('Impulse Verdichter 1')]
     compressor_starts = rows['1']
