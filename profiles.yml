@@ -1,18 +1,10 @@
 # templated profiles yaml for running dbt in automated fashion, e.g. in a docker container, triggered from airflow.
 # values must be available as environment variables
-novelan:
+energy_monitor:
   target: smarthome_dwh
   outputs:
     smarthome_dwh:
       type: duckdb
       schema: analytics
       path: 'smarthome_dwh.duckdb'
-      threads: 24
-engelmann:
-  target: smarthome_dwh
-  outputs:
-    smarthome_dwh:
-      type: duckdb
-      schema: analytics
-      path: 'smarthome_dwh.duckdb'
-      threads: 24      
+      threads: 24     
