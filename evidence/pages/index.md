@@ -235,12 +235,45 @@ title: Energy Monitor
   order by year desc;
 ```
 
+```sql compressor_starts_total_month
+  select 
+    month,
+    compressor_starts
+  from smarthome_dwh.heatpump_compressor_starts_total_monthly
+  where strftime(month, '%Y-%m') like '${inputs.month.value}'
+  order by month desc;
+```
 
+```sql compressor_starts_total_monthly
+  select 
+    strftime(month, '%Y-%m') as month,
+    compressor_starts
+  from smarthome_dwh.heatpump_compressor_starts_total_monthly
+  order by month desc;
+```
+
+```sql compressor_starts_total_yearly
+  select 
+    strftime(year, '%Y') as year,
+    compressor_starts
+  from smarthome_dwh.heatpump_compressor_starts_total_yearly
+  order by year desc;
+```
+
+```sql compressor_starts_total_current_year
+  select 
+    strftime(year, '%Y') as year,
+    compressor_starts
+  from smarthome_dwh.heatpump_compressor_starts_total_yearly
+  where strftime(year, '%Y') like date_part('year', current_date())
+  order by year desc;
+```
 
 <LastRefreshed/>
 
 ## Overview
 
+<Grid cols=2>
 <BigValue 
   data={heat_quantities_current_year} 
   value=heat_quantity_heating
@@ -254,7 +287,9 @@ title: Energy Monitor
   title="Heat Quantity Water YTD"
   fmt=num0
 />
+</Grid>
 
+<Grid cols=3>
 <BigValue 
   data={compressor_starts_current_year} 
   value=compressor_starts_heating
@@ -268,6 +303,14 @@ title: Energy Monitor
   title="Compressor Starts Water YTD"
   fmt=num0
 />
+
+<BigValue 
+  data={compressor_starts_total_current_year} 
+  value=compressor_starts
+  title="Compressor Starts Total YTD"
+  fmt=num0
+/>
+</Grid>
 
 <LineChart
     data={heat_quantities_last_13_month}
@@ -355,7 +398,7 @@ title: Energy Monitor
 />
 </Grid>
 
-<Grid cols=2>
+<Grid cols=3>
 <BarChart 
     data={compressor_starts_yearly}
     title="Compressor Heating Starts Per Year"
@@ -373,6 +416,16 @@ title: Energy Monitor
     xFmt=yyyy
     sort=false
 />
+
+<BarChart 
+    data={compressor_starts_total_yearly}
+    title="Compressor Starts Total Per Year"
+    x=year
+    y=compressor_starts
+    xFmt=yyyy
+    sort=false
+/>
+
 </Grid>
 
 <LineChart
@@ -392,6 +445,7 @@ title: Energy Monitor
 
 <LineBreak/>
 
+<Grid cols=2>
 <BigValue 
   data={heat_quantities_month} 
   value=heat_quantity_heating
@@ -405,7 +459,9 @@ title: Energy Monitor
   sparkline=month
   fmt=num0
 />
+</Grid>
 
+<Grid cols=3>
 <BigValue 
   data={compressor_starts_month} 
   value=compressor_starts_heating
@@ -419,6 +475,14 @@ title: Energy Monitor
   sparkline=month
   fmt=num0
 />
+
+<BigValue 
+  data={compressor_starts_total_month} 
+  value=compressor_starts
+  sparkline=month
+  fmt=num0
+/>
+</Grid>
 
 <LineChart
     data={heat_quantities_daily}
