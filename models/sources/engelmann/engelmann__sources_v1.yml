@@ -11,7 +11,7 @@ sources:
           - name: meter_id
             data_type: varchar
           - name: heat_quantity
-            data_type: bigint
+            data_type: integer
           - name: heat_quantity_type
             data_type: varchar
           - name: cost_center

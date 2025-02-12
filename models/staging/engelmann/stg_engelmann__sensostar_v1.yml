@@ -13,7 +13,7 @@ models:
         description: ""
 
       - name: heat_quantity
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: heat_quantity_type
