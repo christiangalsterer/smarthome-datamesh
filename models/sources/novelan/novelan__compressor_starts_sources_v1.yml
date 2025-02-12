@@ -9,6 +9,6 @@ sources:
           - name: created_date
             data_type: timestamp
           - name: created_at
-            data_type: bigint
+            data_type: integer
           - name: compressor_starts
-            data_type: bigint
+            data_type: integer
