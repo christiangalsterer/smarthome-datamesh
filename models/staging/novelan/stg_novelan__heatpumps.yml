@@ -9,79 +9,79 @@ models:
         description: ""
 
       - name: created_at
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: hup
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zup
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: bupout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zw2
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ma1
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mz1
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zip
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: vd1out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: vd2
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: vent
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: av
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: vbs
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zw1
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: hd
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: nd
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mot
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: asd
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: evu
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: tfb1
@@ -125,51 +125,51 @@ models:
         description: ""
 
       - name: tmk1soll
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ai1div
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: sup
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: fup2
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ma2
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mz2
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ma3
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mz3
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: fup3
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zw3
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: slp
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ao1
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ao2
@@ -177,7 +177,7 @@ models:
         description: ""
 
       - name: swt
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: tss
@@ -209,7 +209,7 @@ models:
         description: ""
 
       - name: tmk3soll
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: df
@@ -249,11 +249,11 @@ models:
         description: ""
 
       - name: trl_ext
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mk1_soll
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: heat_quantity_heating
@@ -265,139 +265,139 @@ models:
         description: ""
 
       - name: wmz_sw
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: error_id
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: bivalence
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: demand
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: hdin
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ndin
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: motin
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: asdin
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: evuin
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: hupout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zupout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: bupout_1
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zw2sstout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ma1out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mz1out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zipout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: vd1out_1
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: vd2out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: venout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: avout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: vboout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zw1out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: supout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: fp2out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ma2out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mz2out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: ma3out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mz3out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: fp3out
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: zw3sstout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: slpout
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: swtin
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: tfb_2
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: tfb_3
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: mk2_soll
@@ -405,7 +405,7 @@ models:
         description: ""
 
       - name: mk3_soll
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: analogin
@@ -413,7 +413,7 @@ models:
         description: ""
 
       - name: analogout_1
-        data_type: bigint
+        data_type: integer
         description: ""
 
       - name: analogout_2
@@ -429,5 +429,5 @@ models:
         description: ""
 
       - name: wp_typ
-        data_type: bigint
+        data_type: integer
         description: ""

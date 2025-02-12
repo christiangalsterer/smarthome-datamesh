@@ -8,11 +8,13 @@ models:
         enforced: true
     columns:
       - name: created_at
-        data_type: bigint
+        data_type: integer
         description: ""
         data_tests:
           - unique
           - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: created_date
         data_type: timestamp
@@ -21,13 +23,13 @@ models:
           - not_null
 
       - name: compressor_start_heating
-        data_type: bigint
+        data_type: integer
         description: ""
         data_tests:
           - not_null
 
       - name: compressor_start_water
-        data_type: bigint
+        data_type: integer
         description: ""
         data_tests:
           - not_null
