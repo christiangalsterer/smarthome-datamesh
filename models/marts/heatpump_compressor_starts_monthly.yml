@@ -3,6 +3,9 @@ version: 2
 models:
   - name: heatpump_compressor_starts_monthly
     description: ""
+    config:
+      contract:
+        enforced: true
     columns:
       - name: month
         data_type: date

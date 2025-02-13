@@ -3,6 +3,9 @@ version: 2
 models:
   - name: heatpump_compressor_starts_daily
     description: ""
+    config:
+      contract:
+        enforced: true
     columns:
       - name: day
         data_type: date

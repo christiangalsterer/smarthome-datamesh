@@ -3,6 +3,9 @@ version: 2
 models:
   - name: heatpump_compressor_starts_yearly
     description: ""
+    config:
+      contract:
+        enforced: true    
     columns:
       - name: year
         data_type: date
