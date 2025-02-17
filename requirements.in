@@ -1,5 +1,5 @@
 # Database adapter
-dbt-duckdb>=1.9.0
+dbt-duckdb>=1.9.2
 
 # dbt Core
 dbt-core>=1.9.0, <2.0.0
