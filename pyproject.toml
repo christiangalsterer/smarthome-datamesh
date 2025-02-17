@@ -1,0 +1,21 @@
+[project]
+name = "energy-monitor"
+version = "0.1.0"
+description = "Energy Monitor"
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "dbt-duckdb (>=1.9.0,<2.0.0)",
+    "dbt-core (==1.9.0)",
+    "shandy-sqlfmt[jinjafmt] (==0.26.0)",
+    "pandas (==2.2.3)",
+    "matplotlib (==3.10.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false

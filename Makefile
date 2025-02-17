@@ -91,4 +91,4 @@ metabase-run:
 python-deps:
 	@echo "Installing Python dependencies..."
 	python3 -m venv venv
-	source venv/bin/activate && pip install -r requirements.txt
+	source venv/bin/activate && pip-compile && pip install -r requirements.txt && poetry install

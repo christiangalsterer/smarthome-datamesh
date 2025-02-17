@@ -173,7 +173,7 @@ rpds-py==0.22.3
     # via
     #   jsonschema
     #   referencing
-shandy-sqlfmt[jinjafmt]==0.24.0
+shandy-sqlfmt[jinjafmt]==0.26.0
     # via -r requirements.in
 six==1.17.0
     # via
