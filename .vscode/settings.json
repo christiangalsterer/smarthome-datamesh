@@ -19,7 +19,7 @@
             "packages.yml"
         ]
     },
-    "editor.acceptSuggestionOnEnter": true,
+    "editor.acceptSuggestionOnEnter": "on",
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
@@ -31,7 +31,8 @@
         "evidence",
         "npm",
         "metabase",
-        "pandas"
+        "pandas",
+        "dlt"
     ],
     "cSpell.words": [
         "novelan"

@@ -3,7 +3,7 @@ import glob
 import os
 import pandas as pd
 
-def main():
+def get_compressor_starts():
   file_path = '/Users/cg/Documents/Immobilie/Novelan/210124-0F0/*_Text.csv'
   files = glob.glob(file_path)
   compressor_starts_df = pd.DataFrame(columns=['created_date', 'created_at', 'compressor_starts'])
@@ -34,4 +34,4 @@ def main():
     compressor_starts_df.to_csv('data/novelan/heatpump/v1/novelan_heatpump_compressor_starts.csv', index=False, sep=';')
 
 if __name__ == "__main__":
-  main()
+  get_compressor_starts()
