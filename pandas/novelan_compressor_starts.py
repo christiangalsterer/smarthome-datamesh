@@ -31,7 +31,7 @@ def get_compressor_starts():
 
   if compressor_starts_df.size > 0:
     compressor_starts_df.sort_values(by='created_date', inplace=True)
-    compressor_starts_df.to_csv('data/novelan/heatpump/v1/novelan_heatpump_compressor_starts.csv', index=False, sep=';')
+    compressor_starts_df.to_csv('data/input/novelan/heatpump/v1/novelan_heatpump_compressor_starts.csv', index=False, sep=';')
 
 if __name__ == "__main__":
   get_compressor_starts()

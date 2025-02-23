@@ -12,7 +12,7 @@ def read_meter_heat_quantities(file_path) -> pd.DataFrame:
     return df
 
 def write_meter_heat_quantities(df):
-    df.to_csv('data/engelmann/sensostar/v1/heat_quantity_meter_monthly.csv', index=True)
+    df.to_csv('data/input/engelmann/sensostar/v1/heat_quantity_meter_monthly.csv', index=True)
 def plot(df):
     df['monthly_difference'].plot(kind='line', title='Heat Quantity Over Time', legend=True)
     plt.xlabel('Date')
@@ -20,7 +20,7 @@ def plot(df):
     plt.show()
 
 def main():
-    file_path = 'data/engelmann/sensostar/v1/heat_quantity_meter_2*.csv'
+    file_path = 'data/input/engelmann/sensostar/v1/heat_quantity_meter_2*.csv'
     meter_heat_quantities_df = read_meter_heat_quantities(file_path)
     print(meter_heat_quantities_df)
     plot(meter_heat_quantities_df)
