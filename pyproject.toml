@@ -10,7 +10,8 @@ dependencies = [
     "shandy-sqlfmt[jinjafmt] (>=0.26.0,<1.0.0)",
     "pandas (>=2.2,<3.0.0)",
     "matplotlib (>=3.10.0,<4.0.0)",
-    "dlt[duckdb,filesystem] (>=1.7.0,<2.0.0)"
+    "dlt[duckdb,filesystem] (>=1.7.0,<2.0.0)",
+    "streamlit (>=1.42,<2.0)"
 ]
 
 [build-system]
