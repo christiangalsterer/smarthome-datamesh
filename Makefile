@@ -14,11 +14,11 @@ clean: duckdb-clean
 
 duckdb-clean:
 	@echo "Removing DuckDB database..."
-	rm -rf smarthome_dwh.duckdb
+	rm -rf data/output/smarthome_dwh.duckdb
 
 duckdb-ingest:
 	@echo "Loading data into DuckDB database..."
-	source venv/bin/activate && duckdb smarthome_dwh.duckdb < scripts/duckdb_ingest.sql
+	source venv/bin/activate && duckdb data/output/smarthome_dwh.duckdb < scripts/duckdb_ingest.sql
 
 motherduck-ingest:
 	@echo "Loading data into MotherDuck database..."

@@ -6,5 +6,5 @@ energy_monitor:
     smarthome_dwh:
       type: duckdb
       schema: analytics
-      path: 'smarthome_dwh.duckdb'
+      path: 'data/output/smarthome_dwh.duckdb'
       threads: 24     
