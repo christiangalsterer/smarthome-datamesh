@@ -19,7 +19,7 @@ babel==2.16.0
     # via agate
 black==24.10.0
     # via shandy-sqlfmt
-certifi==2024.8.30
+certifi==2024.12.14
     # via requests
 charset-normalizer==3.4.0
     # via requests
