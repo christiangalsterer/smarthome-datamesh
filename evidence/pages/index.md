@@ -319,6 +319,7 @@ title: Energy Monitor
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm"
     yFmt=num0
+    lineWidth=1    
     connectGroup=monthly
 />
 
@@ -329,6 +330,7 @@ title: Energy Monitor
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num0
+    lineWidth=1    
     connectGroup=daily
 />
 
@@ -339,6 +341,7 @@ title: Energy Monitor
     y={['heat_quantity']}
     xFmt="yyyy-mm"
     yFmt=num0
+    lineWidth=1
     connectGroup=monthly
 />
 
@@ -349,6 +352,7 @@ title: Energy Monitor
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+    lineWidth=1
 />
 
 <LineChart
@@ -358,6 +362,7 @@ title: Energy Monitor
     y={['compressor_starts_heating', 'compressor_starts_water']}
     xFmt="yyyy-mm"
     yFmt=num0
+    lineWidth=1    
     connectGroup=monthly
 />
 
@@ -368,6 +373,7 @@ title: Energy Monitor
     y={['compressor_starts_heating', 'compressor_starts_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num1
+    lineWidth=1
     connectGroup=daily
 />
 
@@ -435,6 +441,7 @@ title: Energy Monitor
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num1
+    lineWidth=1
     connectGroup=yearly
 />
 
@@ -491,6 +498,7 @@ title: Energy Monitor
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num0
+    lineWidth=1
     connectGroup=daily
 />
 
@@ -501,6 +509,7 @@ title: Energy Monitor
     y={['compressor_starts_heating', 'compressor_starts_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num0
+    lineWidth=1    
     connectGroup=daily
 />
 
@@ -546,6 +555,7 @@ title: Energy Monitor
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+    lineWidth=1
     connectGroup=daily
 />
 
@@ -556,6 +566,7 @@ title: Energy Monitor
     y={['temp_outside']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+    lineWidth=1
     connectGroup=daily
 />
 
@@ -566,6 +577,7 @@ title: Energy Monitor
     y={['temp_water', 'temp_water_soll']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+    lineWidth=1
     connectGroup=daily
 />
 
@@ -576,6 +588,7 @@ title: Energy Monitor
     y={['heat_quantity_heating', 'heat_quantity_water']}
     xFmt="yyyy-mm-dd"
     yFmt=num0
+    lineWidth=1    
     connectGroup=daily
 />
 
@@ -586,6 +599,7 @@ title: Energy Monitor
     y={['compressor_start_heating', 'compressor_start_water']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
+    lineWidth=1
     connectGroup=daily
 />
 
