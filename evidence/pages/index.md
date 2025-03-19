@@ -52,15 +52,6 @@ title: Energy Monitor
   order by month desc;
 ```
 
-```sql meter_heat_quantities_last_13_month
-  select 
-    month,
-    heat_quantity
-  from smarthome_dwh.meter_heat_quantities_monthly
-  where month between (date_trunc('month', current_date()) - INTERVAL 13 MONTH) and current_date()
-  order by month desc;
-```
-
 ```sql heat_quantities_last_month
   select 
     day,
@@ -120,6 +111,42 @@ title: Energy Monitor
   where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
   order by timestamp desc
 ```
+
+```sql meter_heat_quantities_yearly
+  select 
+    strftime(year, '%Y') as year,
+    heat_quantity
+  from smarthome_dwh.meter_heat_quantities_yearly
+  order by year desc;
+```
+
+```sql meter_heat_quantities_current_year
+  select 
+    strftime(year, '%Y') as year,
+    heat_quantity
+  from smarthome_dwh.meter_heat_quantities_yearly
+  where strftime(year, '%Y') like date_part('year', current_date())
+  order by year desc;
+```
+
+```sql meter_heat_quantities_last_13_month
+  select 
+    month,
+    heat_quantity
+  from smarthome_dwh.meter_heat_quantities_monthly
+  where month between (date_trunc('month', current_date()) - INTERVAL 13 MONTH) and current_date()
+  order by month desc;
+```
+
+```sql meter_heat_quantities_month
+  select 
+    month,
+    heat_quantity
+  from smarthome_dwh.meter_heat_quantities_monthly
+  where strftime(month, '%Y-%m') like '${inputs.month.value}'
+  order by month desc;
+```
+
 
 ```sql heatpump_temperatures_day
   select 
@@ -273,7 +300,7 @@ title: Energy Monitor
 
 ## Overview
 
-<Grid cols=2>
+<Grid cols=3>
 <BigValue 
   data={heat_quantities_current_year} 
   value=heat_quantity_heating
@@ -285,6 +312,13 @@ title: Energy Monitor
   data={heat_quantities_current_year} 
   value=heat_quantity_water
   title="Heat Quantity Water YTD"
+  fmt=num0
+/>
+
+<BigValue 
+  data={meter_heat_quantities_current_year} 
+  value=heat_quantity
+  title="Heat Quantity External Meter YTD"
   fmt=num0
 />
 </Grid>
@@ -384,7 +418,7 @@ title: Energy Monitor
 
 <LineBreak/>
 
-<Grid cols=2>
+<Grid cols=3>
 <BarChart 
     data={heat_quantities_yearly}
     title="Heat Quantity Heating Per Year"
@@ -399,6 +433,15 @@ title: Energy Monitor
     title="Heat Quantity Water Per Year"
     x=year
     y=heat_quantity_water
+    xFmt=yyyy
+    sort=false
+/>
+
+<BarChart 
+    data={meter_heat_quantities_yearly}
+    title="Heat Quantity External Per Year"
+    x=year
+    y=heat_quantity
     xFmt=yyyy
     sort=false
 />
@@ -452,7 +495,7 @@ title: Energy Monitor
 
 <LineBreak/>
 
-<Grid cols=2>
+<Grid cols=3>
 <BigValue 
   data={heat_quantities_month} 
   value=heat_quantity_heating
@@ -466,7 +509,16 @@ title: Energy Monitor
   sparkline=month
   fmt=num0
 />
+
+<BigValue 
+  data={meter_heat_quantities_month}
+  title="Heat Quantity External Meter"
+  value=heat_quantity
+  sparkline=month
+  fmt=num0
+/>
 </Grid>
+
 
 <Grid cols=3>
 <BigValue 
