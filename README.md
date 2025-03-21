@@ -1,4 +1,4 @@
-[![GitHub Actions CI Status](https://github.com/christiangalsterer/smarthome-datamesh/actions/workflows/build.yaml/badge.svg)](https://github.com/christiangalsterer/smarthome-datamesh/actions/workflows/ci.yaml)
+[![GitHub Actions CI Status](https://github.com/christiangalsterer/smarthome-datamesh/actions/workflows/ci.yaml/badge.svg)](https://github.com/christiangalsterer/smarthome-datamesh/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/christiangalsterer/smarthome-datamesh/graph/badge.svg?token=Q4POJZ46LC)](https://codecov.io/gh/christiangalsterer/smarthome-datamesh)
 [![Coveralls](https://coveralls.io/repos/github/christiangalsterer/smarthome-datamesh/badge.svg?branch=main)](https://coveralls.io/github/christiangalsterer/smarthome-datamesh?branch=main)
 [![Known Vulnerabilities](https://snyk.io/test/github/christiangalsterer/smarthome-datamesh/badge.svg)](https://github.com/christiangalsterer/smarthome-datamesh/security/advisories)
