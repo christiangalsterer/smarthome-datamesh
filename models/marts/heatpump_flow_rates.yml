@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: heatpump_flow_rate
+    description: ""
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: created_at
+        data_type: integer
+        description: ""
+        data_tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+
+      - name: created_date
+        data_type: timestamp
+        description: ""
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+
+      - name: flow_rate1
+        data_type: double
+        description: ""
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: double    
+        

@@ -147,7 +147,6 @@ title: Energy Monitor
   order by month desc;
 ```
 
-
 ```sql heatpump_temperatures_day
   select 
     created_date as timestamp,
@@ -296,6 +295,25 @@ title: Energy Monitor
   order by year desc;
 ```
 
+
+```sql heatpump_flow_rates_day
+  select 
+    created_date as timestamp,
+    flow_rate
+  from smarthome_dwh.heatpump_flow_rates
+  where strftime(created_date, '%Y-%m-%d') like '${inputs.day.value}'
+  order by timestamp desc
+```
+
+```sql heatpump_flow_rates_last_7_days
+  select 
+    created_date as timestamp,
+    flow_rate
+  from smarthome_dwh.heatpump_flow_rates
+  where timestamp between current_date() - INTERVAL 7 DAY and current_date()
+  order by timestamp desc
+```
+
 <LastRefreshed/>
 
 ## Overview
@@ -384,6 +402,16 @@ title: Energy Monitor
     title="Temperature last 7 days"
     x=timestamp
     y={['temp_ruecklauf', 'temp_ruecklauf_soll', 'temp_vorlauf', 'temp_delta_t']}
+    xFmt="yyyy-mm-dd hh:mm:s"
+    yFmt=num2
+    lineWidth=1
+/>
+
+<LineChart
+    data={heatpump_flow_rates_last_7_days}
+    title="Flow Rate last 7 days"
+    x=timestamp
+    y={['flow_rate']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
     lineWidth=1
@@ -649,6 +677,17 @@ title: Energy Monitor
     title="Compressor Starts {inputs.day.label}"
     x=timestamp
     y={['compressor_start_heating', 'compressor_start_water']}
+    xFmt="yyyy-mm-dd hh:mm:s"
+    yFmt=num2
+    lineWidth=1
+    connectGroup=daily
+/>
+
+<LineChart
+    data={heatpump_flow_rates_day}
+    title="Flow Rate {inputs.day.label}"
+    x=timestamp
+    y={['flow_rate']}
     xFmt="yyyy-mm-dd hh:mm:s"
     yFmt=num2
     lineWidth=1
